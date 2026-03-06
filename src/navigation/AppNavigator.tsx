@@ -9,7 +9,7 @@ import {
   ProductFormScreen,
   ProductDetailScreen,
   CartScreen,
-} from '@/screens';
+} from '../screens';
 import type { RootStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

@@ -6,7 +6,7 @@ import { Button, Rating } from '@/components/ui';
 import { Colors, mockProducts, mockDailyDeals } from '@/constants';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
-import type { RootStackParamList } from '@/navigation/types';
+import type { RootStackParamList } from '../navigation/types';
 
 type ProductDetailScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'ProductDetail'>;
@@ -15,7 +15,7 @@ type ProductDetailScreenProps = {
 
 const allProducts = [...mockProducts, ...mockDailyDeals];
 
-const colorOptions = ['#1a1a2e', '#ffffff', '#007bff'];
+const colorOptions = ['#0F172A', '#ffffff', '#06B6D4'];
 
 export const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({
   navigation,
@@ -101,7 +101,7 @@ export const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({
                 >
                   <View
                     className="w-8 h-8 rounded-full"
-                    style={{ backgroundColor: color, borderWidth: color === '#ffffff' ? 1 : 0, borderColor: '#e0e0e0' }}
+                    style={{ backgroundColor: color, borderWidth: color === '#ffffff' ? 1 : 0, borderColor: '#E2E8F0' }}
                   />
                 </TouchableOpacity>
               ))}

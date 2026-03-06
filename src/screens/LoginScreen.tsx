@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Switch, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TextInput,
+  Image,
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
-import { ScreenWrapper, Header } from '@/components/layout';
-import { Input, Button } from '@/components/ui';
-import { Colors } from '@/constants';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '@/navigation/types';
 
@@ -14,6 +22,7 @@ type LoginScreenProps = {
 export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [secureText, setSecureText] = useState(true);
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = () => {
@@ -21,81 +30,157 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   };
 
   return (
-    <ScreenWrapper>
-      <Header
-        title="Login"
-        showBack
-        onBack={() => navigation.goBack()}
-        rightIcon="shopping-cart"
-        onRightPress={() => navigation.navigate('Cart')}
-      />
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        className="flex-1"
-      >
-        <ScrollView
-          className="flex-1 px-5"
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
+    <LinearGradient
+      colors={['#0891B2', '#06B6D4', '#67E8F9']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={{ flex: 1 }}
+    >
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        {/* Top Nav */}
+        <View className="flex-row items-center justify-end px-5 py-3">
+          <View className="flex-row items-center">
+            <Text className="text-white/80 text-sm">Don&apos;t have an account?</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Register')}
+              className="ml-2 bg-white/20 rounded-md px-3 py-1.5"
+            >
+              <Text className="text-white text-sm font-semibold">Get Started</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Brand */}
+        <Text className="text-white text-3xl font-bold text-center my-5 italic">
+          Aura Technology
+        </Text>
+
+        {/* White Form Card with rounded top */}
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: '#ffffff',
+            borderTopLeftRadius: 28,
+            borderTopRightRadius: 28,
+          }}
         >
-          <View className="mt-8 mb-6">
-            <View className="w-16 h-16 bg-primary-light rounded-2xl items-center justify-center mb-5">
-              <MaterialIcons name="shopping-cart" size={32} color={Colors.primary} />
-            </View>
-            <Text className="text-3xl font-bold text-text-primary mb-2">Welcome Back!</Text>
-            <Text className="text-base text-text-secondary leading-6">
-              Please enter your details to sign in to your account.
-            </Text>
-          </View>
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={{ flex: 1 }}
+          >
+            <ScrollView
+              style={{ flex: 1 }}
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={{ paddingBottom: 40 }}
+            >
+              <View className="px-6 pt-8">
+                <Text className="text-2xl font-bold text-gray-900 text-center">
+                  Welcome Back
+                </Text>
+                <Text className="text-sm text-gray-500 text-center mt-1.5 mb-8">
+                  Enter your details below
+                </Text>
 
-          <Input
-            label="Email Address"
-            placeholder="Enter your email"
-            value={email}
-            onChangeText={setEmail}
-            icon="mail"
-            keyboardType="email-address"
-          />
+                {/* Email Input */}
+                <View className="mb-4">
+                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Email Address</Text>
+                  <View className="bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                    <TextInput
+                      className="text-base text-gray-900"
+                      placeholder="nicholas@ergemla.com"
+                      placeholderTextColor="#9CA3AF"
+                      value={email}
+                      onChangeText={setEmail}
+                      keyboardType="email-address"
+                      autoCapitalize="none"
+                    />
+                  </View>
+                </View>
 
-          <Input
-            label="Password"
-            placeholder="Enter your password"
-            value={password}
-            onChangeText={setPassword}
-            icon="lock"
-            secureTextEntry
-          />
+                {/* Password Input */}
+                <View className="mb-4">
+                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Password</Text>
+                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                    <TextInput
+                      className="flex-1 text-base text-gray-900"
+                      placeholder="Enter your password"
+                      placeholderTextColor="#9CA3AF"
+                      value={password}
+                      onChangeText={setPassword}
+                      secureTextEntry={secureText}
+                    />
+                    <TouchableOpacity onPress={() => setSecureText(!secureText)}>
+                      <MaterialIcons
+                        name={secureText ? 'visibility-off' : 'visibility'}
+                        size={22}
+                        color="#9CA3AF"
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
 
-          <View className="flex-row items-center justify-between mb-6">
-            <View className="flex-row items-center">
-              <Switch
-                value={rememberMe}
-                onValueChange={setRememberMe}
-                trackColor={{ false: Colors.border, true: Colors.primary }}
-                thumbColor="#ffffff"
-              />
-              <Text className="text-sm text-text-secondary ml-2">Remember me</Text>
-            </View>
-            <TouchableOpacity>
-              <Text className="text-sm text-primary font-medium">Forgot Password?</Text>
-            </TouchableOpacity>
-          </View>
+                {/* Remember Me & Forgot Password */}
+                <View className="flex-row items-center justify-between mb-6">
+                  <TouchableOpacity
+                    onPress={() => setRememberMe(!rememberMe)}
+                    activeOpacity={0.7}
+                    className="flex-row items-center"
+                  >
+                    <View
+                      className={`w-5 h-5 rounded border items-center justify-center ${
+                        rememberMe ? 'bg-[#06B6D4] border-[#06B6D4]' : 'border-gray-300 bg-transparent'
+                      }`}
+                    >
+                      {rememberMe ? (
+                        <MaterialIcons name="check" size={14} color="#fff" />
+                      ) : null}
+                    </View>
+                    <Text className="text-sm text-gray-600 ml-2">Remember me</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Text className="text-sm text-[#06B6D4] font-medium">Forgot Password?</Text>
+                  </TouchableOpacity>
+                </View>
 
-          <Button
-            title="Sign In"
-            onPress={handleLogin}
-            icon="login"
-            iconPosition="right"
-          />
+                {/* Sign In Button */}
+                <TouchableOpacity onPress={handleLogin} activeOpacity={0.85}>
+                  <LinearGradient
+                    colors={['#0891B2', '#06B6D4', '#22D3EE']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={{ borderRadius: 12, paddingVertical: 16, alignItems: 'center' }}
+                  >
+                    <Text className="text-white text-base font-bold">Sign in</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
 
-          <View className="flex-row items-center justify-center mt-6 mb-8">
-            <Text className="text-sm text-text-secondary">Don't have an account? </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-              <Text className="text-sm text-primary font-semibold">Sign Up</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </ScreenWrapper>
+                {/* Divider */}
+                <View className="flex-row items-center my-7">
+                  <View className="flex-1 h-px bg-gray-200" />
+                  <Text className="text-xs text-gray-400 mx-4">Or sign in with</Text>
+                  <View className="flex-1 h-px bg-gray-200" />
+                </View>
+
+                {/* Social Buttons */}
+                <View className="flex-row gap-3">
+                  <TouchableOpacity className="flex-1 flex-row items-center justify-center border border-gray-200 rounded-xl py-3.5">
+                    <Image
+                      source={{ uri: 'https://www.google.com/favicon.ico' }}
+                      className="w-5 h-5 mr-2"
+                    />
+                    <Text className="text-sm font-semibold text-gray-700">Google</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity className="flex-1 flex-row items-center justify-center border border-gray-200 rounded-xl py-3.5">
+                    <MaterialIcons name="facebook" size={20} color="#1877F2" />
+                    <Text className="text-sm font-semibold text-blue-600 ml-2">Facebook</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };

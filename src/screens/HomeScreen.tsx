@@ -6,7 +6,7 @@ import { SearchBar, Badge } from '@/components/ui';
 import { CategoryChip, ProductCard } from '@/components/products';
 import { Colors, mockCategories, mockDailyDeals } from '@/constants';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '@/navigation/types';
+import type { RootStackParamList } from '../navigation/types';
 
 type HomeScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'MainTabs'>;

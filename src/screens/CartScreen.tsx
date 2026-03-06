@@ -7,7 +7,7 @@ import { CartItemCard } from '@/components/products';
 import { Colors, mockCartItems } from '@/constants';
 import type { CartItem } from '@/constants/mockData';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '@/navigation/types';
+import type { RootStackParamList } from '../navigation/types';
 
 type CartScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Cart'>;
