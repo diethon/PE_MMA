@@ -7,11 +7,14 @@ import {
   Platform,
   ScrollView,
   TextInput,
-  Image,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAuth } from '@/contexts/AuthContext';
+import type { UserRole } from '@/services/authDb';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '@/navigation/types';
 
@@ -34,9 +37,9 @@ function getPasswordStrength(pwd: string): PasswordStrength {
 }
 
 const strengthConfig = {
-  weak: { label: 'Weak', color: '#EF4444', bars: 1 },
-  medium: { label: 'Medium', color: '#F59E0B', bars: 2 },
-  strong: { label: 'Strong', color: '#22C55E', bars: 3 },
+  weak: { label: 'Yếu', color: '#EF4444', bars: 1 },
+  medium: { label: 'Trung bình', color: '#F59E0B', bars: 2 },
+  strong: { label: 'Mạnh', color: '#22C55E', bars: 3 },
 };
 
 export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
@@ -44,12 +47,35 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
   const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
   const [secureText, setSecureText] = useState(true);
+  const [role, setRole] = useState<UserRole>('buyer');
+  const [loading, setLoading] = useState(false);
+  const { register } = useAuth();
 
   const strength = useMemo(() => getPasswordStrength(password), [password]);
   const cfg = strengthConfig[strength];
 
-  const handleRegister = () => {
-    navigation.navigate('Login');
+  const handleRegister = async () => {
+    if (!email.trim() || !fullName.trim() || !password.trim()) {
+      Alert.alert('Lỗi', 'Vui lòng nhập đầy đủ thông tin');
+      return;
+    }
+    if (password.length < 6) {
+      Alert.alert('Lỗi', 'Mật khẩu phải có ít nhất 6 ký tự');
+      return;
+    }
+    setLoading(true);
+    try {
+      const user = await register(email, fullName, password, role);
+      Alert.alert(
+        'Đăng ký thành công!',
+        `Chào mừng ${user.fullName}!\nVai trò: ${role === 'seller' ? 'Người bán' : 'Người mua'}`,
+        [{ text: 'OK', onPress: () => navigation.replace('Main') }],
+      );
+    } catch (e: any) {
+      Alert.alert('Đăng ký thất bại', e.message || 'Có lỗi xảy ra');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -66,22 +92,22 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
             <MaterialIcons name="chevron-left" size={28} color="#fff" />
           </TouchableOpacity>
           <View className="flex-row items-center">
-            <Text className="text-white/80 text-sm">Already have an account?</Text>
+            <Text className="text-white/80 text-sm">Đã có tài khoản?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('Login')}
               className="ml-2 bg-white/20 rounded-md px-3 py-1.5"
             >
-              <Text className="text-white text-sm font-semibold">Sign in</Text>
+              <Text className="text-white text-sm font-semibold">Đăng nhập</Text>
             </TouchableOpacity>
           </View>
         </View>
 
         {/* Brand */}
-        <Text className="text-white text-3xl font-bold text-center my-5 italic">
+        <Text className="text-white text-3xl font-bold text-center my-4 italic">
           Aura Technology
         </Text>
 
-        {/* White Form Card with rounded top */}
+        {/* White Form Card */}
         <View
           style={{
             flex: 1,
@@ -102,19 +128,82 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
             >
               <View className="px-6 pt-8">
                 <Text className="text-2xl font-bold text-gray-900 text-center">
-                  Get started free.
+                  Tạo tài khoản
                 </Text>
-                <Text className="text-sm text-gray-500 text-center mt-1.5 mb-8">
-                  Free forever. No credit card needed.
+                <Text className="text-sm text-gray-500 text-center mt-1.5 mb-6">
+                  Đăng ký miễn phí, không cần thẻ tín dụng
                 </Text>
 
-                {/* Email Input */}
+                {/* Role Selector */}
+                <View className="mb-5">
+                  <Text className="text-xs text-gray-500 mb-2 ml-1">Bạn là</Text>
+                  <View className="flex-row bg-gray-100 rounded-xl p-1">
+                    <TouchableOpacity
+                      onPress={() => setRole('buyer')}
+                      className={`flex-1 flex-row items-center justify-center py-3 rounded-lg ${
+                        role === 'buyer' ? 'bg-white' : ''
+                      }`}
+                      style={role === 'buyer' ? { elevation: 2, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } } : {}}
+                    >
+                      <MaterialIcons
+                        name="person"
+                        size={18}
+                        color={role === 'buyer' ? '#06B6D4' : '#9CA3AF'}
+                      />
+                      <Text
+                        className={`ml-1.5 text-sm font-semibold ${
+                          role === 'buyer' ? 'text-primary' : 'text-gray-400'
+                        }`}
+                      >
+                        Người mua
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => setRole('seller')}
+                      className={`flex-1 flex-row items-center justify-center py-3 rounded-lg ${
+                        role === 'seller' ? 'bg-white' : ''
+                      }`}
+                      style={role === 'seller' ? { elevation: 2, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } } : {}}
+                    >
+                      <MaterialIcons
+                        name="store"
+                        size={18}
+                        color={role === 'seller' ? '#06B6D4' : '#9CA3AF'}
+                      />
+                      <Text
+                        className={`ml-1.5 text-sm font-semibold ${
+                          role === 'seller' ? 'text-primary' : 'text-gray-400'
+                        }`}
+                      >
+                        Người bán
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                {/* Full Name */}
                 <View className="mb-4">
-                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Email Address</Text>
-                  <View className="bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Họ và tên</Text>
+                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                    <MaterialIcons name="person-outline" size={18} color="#9CA3AF" />
                     <TextInput
-                      className="text-base text-gray-900"
-                      placeholder="nicholas@ergemla.com"
+                      className="flex-1 text-base text-gray-900 ml-2"
+                      placeholder="Nguyễn Văn A"
+                      placeholderTextColor="#9CA3AF"
+                      value={fullName}
+                      onChangeText={setFullName}
+                    />
+                  </View>
+                </View>
+
+                {/* Email */}
+                <View className="mb-4">
+                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Email</Text>
+                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                    <MaterialIcons name="email" size={18} color="#9CA3AF" />
+                    <TextInput
+                      className="flex-1 text-base text-gray-900 ml-2"
+                      placeholder="email@example.com"
                       placeholderTextColor="#9CA3AF"
                       value={email}
                       onChangeText={setEmail}
@@ -124,27 +213,14 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
                   </View>
                 </View>
 
-                {/* Full Name Input */}
-                <View className="mb-4">
-                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Your name</Text>
-                  <View className="bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
-                    <TextInput
-                      className="text-base text-gray-900"
-                      placeholder="Nicholas Ergemla"
-                      placeholderTextColor="#9CA3AF"
-                      value={fullName}
-                      onChangeText={setFullName}
-                    />
-                  </View>
-                </View>
-
-                {/* Password Input */}
+                {/* Password */}
                 <View className="mb-6">
-                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Password</Text>
+                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Mật khẩu</Text>
                   <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                    <MaterialIcons name="lock" size={18} color="#9CA3AF" />
                     <TextInput
-                      className="flex-1 text-base text-gray-900"
-                      placeholder="Create a password"
+                      className="flex-1 text-base text-gray-900 ml-2"
+                      placeholder="Tối thiểu 6 ký tự"
                       placeholderTextColor="#9CA3AF"
                       value={password}
                       onChangeText={setPassword}
@@ -161,10 +237,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
                             }}
                           />
                         ))}
-                        <Text
-                          className="text-xs font-medium ml-1.5"
-                          style={{ color: cfg.color }}
-                        >
+                        <Text className="text-xs font-medium ml-1.5" style={{ color: cfg.color }}>
                           {cfg.label}
                         </Text>
                       </View>
@@ -180,39 +253,21 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
                   </View>
                 </View>
 
-                {/* Sign Up Button */}
-                <TouchableOpacity onPress={handleRegister} activeOpacity={0.85}>
+                {/* Register Button */}
+                <TouchableOpacity onPress={handleRegister} activeOpacity={0.85} disabled={loading}>
                   <LinearGradient
                     colors={['#0891B2', '#06B6D4', '#22D3EE']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
-                    style={{ borderRadius: 12, paddingVertical: 16, alignItems: 'center' }}
+                    style={{ borderRadius: 12, paddingVertical: 16, alignItems: 'center', opacity: loading ? 0.7 : 1 }}
                   >
-                    <Text className="text-white text-base font-bold">Sign up</Text>
+                    {loading ? (
+                      <ActivityIndicator color="#fff" />
+                    ) : (
+                      <Text className="text-white text-base font-bold">Đăng ký</Text>
+                    )}
                   </LinearGradient>
                 </TouchableOpacity>
-
-                {/* Divider */}
-                <View className="flex-row items-center my-7">
-                  <View className="flex-1 h-px bg-gray-200" />
-                  <Text className="text-xs text-gray-400 mx-4">Or sign up with</Text>
-                  <View className="flex-1 h-px bg-gray-200" />
-                </View>
-
-                {/* Social Buttons */}
-                <View className="flex-row gap-3">
-                  <TouchableOpacity className="flex-1 flex-row items-center justify-center border border-gray-200 rounded-xl py-3.5">
-                    <Image
-                      source={{ uri: 'https://www.google.com/favicon.ico' }}
-                      className="w-5 h-5 mr-2"
-                    />
-                    <Text className="text-sm font-semibold text-gray-700">Google</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity className="flex-1 flex-row items-center justify-center border border-gray-200 rounded-xl py-3.5">
-                    <MaterialIcons name="facebook" size={20} color="#1877F2" />
-                    <Text className="text-sm font-semibold text-blue-600 ml-2">Facebook</Text>
-                  </TouchableOpacity>
-                </View>
               </View>
             </ScrollView>
           </KeyboardAvoidingView>

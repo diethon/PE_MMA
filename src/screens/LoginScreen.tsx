@@ -8,10 +8,13 @@ import {
   ScrollView,
   TextInput,
   Image,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAuth } from '@/contexts/AuthContext';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '@/navigation/types';
 
@@ -24,9 +27,25 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [secureText, setSecureText] = useState(true);
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
 
-  const handleLogin = () => {
-    navigation.navigate('MainTabs');
+  const handleLogin = async () => {
+    if (!email.trim() || !password.trim()) {
+      Alert.alert('Lỗi', 'Vui lòng nhập email và mật khẩu');
+      return;
+    }
+    setLoading(true);
+    try {
+      const user = await login(email, password);
+      Alert.alert('Đăng nhập thành công', `Xin chào ${user.fullName}!\nVai trò: ${user.role === 'seller' ? 'Người bán' : 'Người mua'}`, [
+        { text: 'OK', onPress: () => navigation.replace('Main') },
+      ]);
+    } catch (e: any) {
+      Alert.alert('Đăng nhập thất bại', e.message || 'Email hoặc mật khẩu không đúng');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -40,12 +59,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         {/* Top Nav */}
         <View className="flex-row items-center justify-end px-5 py-3">
           <View className="flex-row items-center">
-            <Text className="text-white/80 text-sm">Don&apos;t have an account?</Text>
+            <Text className="text-white/80 text-sm">Chưa có tài khoản?</Text>
             <TouchableOpacity
               onPress={() => navigation.navigate('Register')}
               className="ml-2 bg-white/20 rounded-md px-3 py-1.5"
             >
-              <Text className="text-white text-sm font-semibold">Get Started</Text>
+              <Text className="text-white text-sm font-semibold">Đăng ký</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -55,7 +74,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
           Aura Technology
         </Text>
 
-        {/* White Form Card with rounded top */}
+        {/* White Form Card */}
         <View
           style={{
             flex: 1,
@@ -76,19 +95,37 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             >
               <View className="px-6 pt-8">
                 <Text className="text-2xl font-bold text-gray-900 text-center">
-                  Welcome Back
+                  Đăng nhập
                 </Text>
-                <Text className="text-sm text-gray-500 text-center mt-1.5 mb-8">
-                  Enter your details below
+                <Text className="text-sm text-gray-500 text-center mt-1.5 mb-6">
+                  Nhập thông tin tài khoản của bạn
                 </Text>
+
+                {/* Demo accounts info */}
+                <View className="bg-cyan-50 rounded-xl p-3.5 mb-6">
+                  <Text className="text-xs font-bold text-primary mb-2">Tài khoản demo:</Text>
+                  <View className="flex-row items-center mb-1">
+                    <MaterialIcons name="store" size={14} color="#0891B2" />
+                    <Text className="text-xs text-gray-600 ml-1.5">
+                      Người bán: seller@aura.com / 123456
+                    </Text>
+                  </View>
+                  <View className="flex-row items-center">
+                    <MaterialIcons name="person" size={14} color="#0891B2" />
+                    <Text className="text-xs text-gray-600 ml-1.5">
+                      Người mua: buyer@aura.com / 123456
+                    </Text>
+                  </View>
+                </View>
 
                 {/* Email Input */}
                 <View className="mb-4">
-                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Email Address</Text>
-                  <View className="bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Email</Text>
+                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                    <MaterialIcons name="email" size={18} color="#9CA3AF" />
                     <TextInput
-                      className="text-base text-gray-900"
-                      placeholder="nicholas@ergemla.com"
+                      className="flex-1 text-base text-gray-900 ml-2"
+                      placeholder="email@example.com"
                       placeholderTextColor="#9CA3AF"
                       value={email}
                       onChangeText={setEmail}
@@ -100,11 +137,12 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
                 {/* Password Input */}
                 <View className="mb-4">
-                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Password</Text>
+                  <Text className="text-xs text-gray-500 mb-1.5 ml-1">Mật khẩu</Text>
                   <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                    <MaterialIcons name="lock" size={18} color="#9CA3AF" />
                     <TextInput
-                      className="flex-1 text-base text-gray-900"
-                      placeholder="Enter your password"
+                      className="flex-1 text-base text-gray-900 ml-2"
+                      placeholder="Nhập mật khẩu"
                       placeholderTextColor="#9CA3AF"
                       value={password}
                       onChangeText={setPassword}
@@ -120,7 +158,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                   </View>
                 </View>
 
-                {/* Remember Me & Forgot Password */}
+                {/* Remember Me */}
                 <View className="flex-row items-center justify-between mb-6">
                   <TouchableOpacity
                     onPress={() => setRememberMe(!rememberMe)}
@@ -136,29 +174,33 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                         <MaterialIcons name="check" size={14} color="#fff" />
                       ) : null}
                     </View>
-                    <Text className="text-sm text-gray-600 ml-2">Remember me</Text>
+                    <Text className="text-sm text-gray-600 ml-2">Ghi nhớ đăng nhập</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
-                    <Text className="text-sm text-[#06B6D4] font-medium">Forgot Password?</Text>
+                    <Text className="text-sm text-[#06B6D4] font-medium">Quên mật khẩu?</Text>
                   </TouchableOpacity>
                 </View>
 
                 {/* Sign In Button */}
-                <TouchableOpacity onPress={handleLogin} activeOpacity={0.85}>
+                <TouchableOpacity onPress={handleLogin} activeOpacity={0.85} disabled={loading}>
                   <LinearGradient
                     colors={['#0891B2', '#06B6D4', '#22D3EE']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
-                    style={{ borderRadius: 12, paddingVertical: 16, alignItems: 'center' }}
+                    style={{ borderRadius: 12, paddingVertical: 16, alignItems: 'center', opacity: loading ? 0.7 : 1 }}
                   >
-                    <Text className="text-white text-base font-bold">Sign in</Text>
+                    {loading ? (
+                      <ActivityIndicator color="#fff" />
+                    ) : (
+                      <Text className="text-white text-base font-bold">Đăng nhập</Text>
+                    )}
                   </LinearGradient>
                 </TouchableOpacity>
 
                 {/* Divider */}
                 <View className="flex-row items-center my-7">
                   <View className="flex-1 h-px bg-gray-200" />
-                  <Text className="text-xs text-gray-400 mx-4">Or sign in with</Text>
+                  <Text className="text-xs text-gray-400 mx-4">Hoặc đăng nhập với</Text>
                   <View className="flex-1 h-px bg-gray-200" />
                 </View>
 

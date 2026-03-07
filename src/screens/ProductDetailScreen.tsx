@@ -1,123 +1,205 @@
-import React, { useState } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useMemo } from 'react';
+import { View, Text, Image, ScrollView, TouchableOpacity, Linking, Dimensions } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { ScreenWrapper } from '@/components/layout';
-import { Button, Rating } from '@/components/ui';
-import { Colors, mockProducts, mockDailyDeals } from '@/constants';
+import { Colors } from '@/constants';
+import { allProducts } from '@/constants/productData';
+import { useCart } from '@/contexts/CartContext';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
-import type { RootStackParamList } from '../navigation/types';
+import type { AppStackParamList } from '../navigation/types';
 
-type ProductDetailScreenProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'ProductDetail'>;
-  route: RouteProp<RootStackParamList, 'ProductDetail'>;
+const { width } = Dimensions.get('window');
+
+const categoryLabels: Record<string, string> = {
+  phone: 'Điện thoại',
+  laptop: 'Laptop',
+  tablet: 'Máy tính bảng',
+  watch: 'Đồng hồ',
 };
 
-const allProducts = [...mockProducts, ...mockDailyDeals];
-
-const colorOptions = ['#0F172A', '#ffffff', '#06B6D4'];
-
-export const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({
-  navigation,
-  route,
-}) => {
+export const ProductDetailScreen: React.FC = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+  const route = useRoute<RouteProp<AppStackParamList, 'ProductDetail'>>();
   const { productId } = route.params;
-  const product = allProducts.find((p) => p.id === productId) ?? allProducts[0];
-  const [selectedColor, setSelectedColor] = useState(0);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const product = useMemo(
+    () => allProducts.find((p) => p.id === productId) ?? allProducts[0],
+    [productId],
+  );
+  const { addProduct } = useCart();
+  const { isFav, toggleFav } = useFavorites();
+  const favorite = isFav(product.id);
+
+  const handleAddToCart = async () => {
+    await addProduct(product);
+  };
+
+  const relatedProducts = useMemo(
+    () =>
+      allProducts
+        .filter((p) => p.brand === product.brand && p.id !== product.id)
+        .slice(0, 6),
+    [product],
+  );
 
   return (
-    <ScreenWrapper>
+    <View className="flex-1 bg-surface">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <View className="flex-row items-center justify-between px-4 py-3">
-          <TouchableOpacity onPress={() => navigation.goBack()} className="p-1">
-            <MaterialIcons name="arrow-back" size={24} color={Colors.textPrimary} />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold text-text-primary">Product Details</Text>
+        {/* Inline back + fav row */}
+        <View className="flex-row items-center justify-between px-4 py-2">
           <TouchableOpacity
-            onPress={() => navigation.navigate('ProductForm', { productId: product.id })}
-            className="p-1"
+            onPress={() => navigation.goBack()}
+            className="flex-row items-center"
           >
-            <MaterialIcons name="edit" size={24} color={Colors.textPrimary} />
+            <MaterialIcons name="arrow-back-ios" size={18} color={Colors.primary} />
+            <Text className="text-sm text-primary font-medium">Quay lại</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => toggleFav(product.id)} className="p-1">
+            <MaterialIcons
+              name={favorite ? 'favorite' : 'favorite-border'}
+              size={24}
+              color={favorite ? '#EF4444' : Colors.textMuted}
+            />
           </TouchableOpacity>
         </View>
 
         {/* Product Image */}
-        <View className="bg-background mx-4 rounded-2xl overflow-hidden mb-4">
+        <View className="bg-white mx-4 rounded-2xl overflow-hidden mb-4 items-center justify-center py-4">
           <Image
             source={{ uri: product.image }}
-            className="w-full h-64"
-            resizeMode="cover"
+            style={{ width: width - 80, height: width - 80 }}
+            resizeMode="contain"
           />
         </View>
 
-        {/* Product Info */}
-        <View className="px-4">
-          <View className="flex-row items-start justify-between mb-2">
-            <Text className="text-2xl font-bold text-text-primary flex-1 mr-3">
-              {product.name}
-            </Text>
-            <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)} className="p-1">
-              <MaterialIcons
-                name={isFavorite ? 'favorite' : 'favorite-border'}
-                size={26}
-                color={isFavorite ? Colors.error : Colors.textSecondary}
-              />
-            </TouchableOpacity>
-          </View>
-
-          <Text className="text-2xl font-bold text-primary mb-3">
-            ${product.price.toFixed(2)}
-          </Text>
-
-          {product.rating ? (
-            <View className="mb-4">
-              <Rating rating={product.rating} reviews={product.reviews} />
-            </View>
-          ) : null}
-
-          {/* Description */}
-          <View className="mb-5">
-            <Text className="text-lg font-bold text-text-primary mb-2">Description</Text>
-            <Text className="text-base text-text-secondary leading-6">
-              {product.description}. Features include active noise cancellation, 30-hour
-              battery life, and comfortable over-ear design. Built with premium materials for
-              long-lasting durability. Perfect for music lovers and professionals alike.
+        {/* Category & Brand Badge */}
+        <View className="flex-row items-center px-4 mb-2">
+          <View className="bg-cyan-50 px-2.5 py-1 rounded-full mr-2">
+            <Text className="text-xs text-primary font-medium">
+              {categoryLabels[product.category] ?? product.category}
             </Text>
           </View>
-
-          {/* Color Selection */}
-          <View className="mb-6">
-            <Text className="text-lg font-bold text-text-primary mb-3">Color</Text>
-            <View className="flex-row gap-3">
-              {colorOptions.map((color, index) => (
-                <TouchableOpacity
-                  key={color}
-                  onPress={() => setSelectedColor(index)}
-                  className={`w-10 h-10 rounded-full items-center justify-center ${
-                    selectedColor === index ? 'border-2 border-primary' : ''
-                  }`}
-                >
-                  <View
-                    className="w-8 h-8 rounded-full"
-                    style={{ backgroundColor: color, borderWidth: color === '#ffffff' ? 1 : 0, borderColor: '#E2E8F0' }}
-                  />
-                </TouchableOpacity>
-              ))}
-            </View>
+          <View className="bg-gray-100 px-2.5 py-1 rounded-full">
+            <Text className="text-xs text-gray-600 font-medium">{product.brand}</Text>
           </View>
         </View>
+
+        {/* Product Name */}
+        <View className="px-4 mb-3">
+          <Text className="text-xl font-bold text-text-primary leading-7">
+            {product.name}
+          </Text>
+        </View>
+
+        {/* Price Section */}
+        <View className="px-4 mb-4">
+          {product.price ? (
+            <View className="flex-row items-end">
+              <Text className="text-2xl font-bold text-primary">{product.price}</Text>
+              {product.oldPrice ? (
+                <Text className="text-base text-gray-400 line-through ml-3 mb-0.5">
+                  {product.oldPrice}
+                </Text>
+              ) : null}
+              {product.discount ? (
+                <View className="bg-red-500 ml-2 px-2 py-0.5 rounded mb-0.5">
+                  <Text className="text-white text-xs font-bold">{product.discount}</Text>
+                </View>
+              ) : null}
+            </View>
+          ) : (
+            <Text className="text-lg text-gray-400 italic">Liên hệ để biết giá</Text>
+          )}
+        </View>
+
+        {/* Rating & Sold */}
+        {product.rating || product.sold ? (
+          <View className="flex-row items-center px-4 mb-4">
+            {product.rating ? (
+              <View className="flex-row items-center bg-amber-50 px-3 py-1.5 rounded-full mr-3">
+                <MaterialIcons name="star" size={16} color={Colors.star} />
+                <Text className="text-sm font-semibold text-amber-700 ml-1">
+                  {product.rating}
+                </Text>
+              </View>
+            ) : null}
+            {product.sold ? (
+              <View className="flex-row items-center bg-gray-50 px-3 py-1.5 rounded-full">
+                <MaterialIcons name="local-fire-department" size={14} color="#EF4444" />
+                <Text className="text-sm text-gray-600 ml-1">
+                  {product.sold.replace('• ', '')}
+                </Text>
+              </View>
+            ) : null}
+          </View>
+        ) : null}
+
+        {/* Specs */}
+        {product.specs.length > 0 ? (
+          <View className="mx-4 bg-gray-50 rounded-xl p-4 mb-4">
+            <Text className="text-base font-bold text-text-primary mb-3">Thông số</Text>
+            {product.specs.map((spec, idx) => (
+              <View key={idx} className="flex-row items-start mb-2">
+                <MaterialIcons name="check-circle" size={16} color={Colors.primary} style={{ marginTop: 2 }} />
+                <Text className="text-sm text-gray-700 ml-2 flex-1">{spec}</Text>
+              </View>
+            ))}
+          </View>
+        ) : null}
+
+        {/* Related Products */}
+        {relatedProducts.length > 0 ? (
+          <View className="mb-6">
+            <Text className="text-base font-bold text-text-primary px-4 mb-3">
+              Sản phẩm cùng hãng
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 12 }}
+            >
+              {relatedProducts.map((rp) => (
+                <TouchableOpacity
+                  key={rp.id}
+                  onPress={() => navigation.push('ProductDetail', { productId: rp.id })}
+                  className="bg-card border border-border rounded-xl mr-3 overflow-hidden"
+                  style={{ width: 150 }}
+                >
+                  <Image
+                    source={{ uri: rp.image }}
+                    style={{ width: 150, height: 120 }}
+                    resizeMode="contain"
+                  />
+                  <View className="p-2">
+                    <Text className="text-xs font-medium text-text-primary" numberOfLines={2}>
+                      {rp.name}
+                    </Text>
+                    {rp.price ? (
+                      <Text className="text-xs font-bold text-primary mt-1">{rp.price}</Text>
+                    ) : (
+                      <Text className="text-xs text-gray-400 italic mt-1">Liên hệ</Text>
+                    )}
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        ) : null}
+
+        <View className="h-4" />
       </ScrollView>
 
       {/* Bottom CTA */}
-      <View className="px-4 py-4 bg-surface border-t border-border">
-        <Button
-          title="Add to Cart"
-          onPress={() => navigation.navigate('Cart')}
-          icon="shopping-cart"
-        />
+      <View className="px-4 py-3 bg-white border-t border-gray-100 flex-row">
+        <TouchableOpacity
+          onPress={handleAddToCart}
+          className="flex-1 bg-primary py-3.5 rounded-xl flex-row items-center justify-center"
+        >
+          <MaterialIcons name="add-shopping-cart" size={20} color="#fff" />
+          <Text className="text-white font-bold text-base ml-2">Thêm vào giỏ</Text>
+        </TouchableOpacity>
       </View>
-    </ScreenWrapper>
+    </View>
   );
 };

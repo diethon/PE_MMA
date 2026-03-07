@@ -1,121 +1,163 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native';
+import React from 'react';
+import { View, Text, ScrollView, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { ScreenWrapper, Header } from '@/components/layout';
-import { Button } from '@/components/ui';
 import { CartItemCard } from '@/components/products';
-import { Colors, mockCartItems } from '@/constants';
-import type { CartItem } from '@/constants/mockData';
+import { Colors } from '@/constants';
+import { useCart } from '@/contexts/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '../navigation/types';
+import type { AppStackParamList } from '../navigation/types';
 
-type CartScreenProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'Cart'>;
-};
+function formatVND(num: number): string {
+  if (!num) return '0₫';
+  return num.toLocaleString('vi-VN') + '₫';
+}
 
-export const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(mockCartItems);
-  const [promoCode, setPromoCode] = useState('');
+export const CartScreen: React.FC = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+  const { items, cartCount, loading, updateQuantity, removeItem, clearCart, checkout } = useCart();
+  const { user } = useAuth();
 
-  const handleQuantityChange = (id: string, quantity: number) => {
-    setCartItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
+  const subtotal = items.reduce((sum, item) => sum + item.priceNum * item.quantity, 0);
+  const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleRemove = (productId: string) => {
+    Alert.alert('Xóa sản phẩm', 'Bạn có chắc muốn xóa sản phẩm này?', [
+      { text: 'Hủy', style: 'cancel' },
+      { text: 'Xóa', style: 'destructive', onPress: () => removeItem(productId) },
+    ]);
+  };
+
+  const handleClear = () => {
+    Alert.alert('Xóa giỏ hàng', 'Bạn có chắc muốn xóa toàn bộ giỏ hàng?', [
+      { text: 'Hủy', style: 'cancel' },
+      { text: 'Xóa tất cả', style: 'destructive', onPress: () => clearCart() },
+    ]);
+  };
+
+  const handleCheckout = () => {
+    if (!user) {
+      Alert.alert('Lỗi', 'Vui lòng đăng nhập để thanh toán.');
+      return;
+    }
+    Alert.alert(
+      'Xác nhận thanh toán',
+      `Bạn có chắc muốn đặt hàng?\n\nSố lượng: ${itemCount} sản phẩm\nTổng tiền: ${formatVND(subtotal)}\nPhí vận chuyển: Miễn phí\n\nĐơn hàng sẽ được xử lý ngay sau khi xác nhận.`,
+      [
+        { text: 'Hủy', style: 'cancel' },
+        {
+          text: 'Xác nhận đặt hàng',
+          onPress: async () => {
+            try {
+              const orderId = await checkout();
+              Alert.alert(
+                'Đặt hàng thành công!',
+                `Mã đơn: ${orderId}\nTổng: ${formatVND(subtotal)}\n\nCảm ơn bạn đã mua hàng!`,
+                [{ text: 'OK' }],
+              );
+            } catch {
+              Alert.alert('Lỗi', 'Không thể đặt hàng. Vui lòng thử lại.');
+            }
+          },
+        },
+      ],
     );
   };
 
-  const handleRemove = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0,
-  );
-  const tax = subtotal * 0.08;
-  const total = subtotal + tax;
-  const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  if (loading) {
+    return (
+      <View className="flex-1 bg-surface items-center justify-center">
+        <ActivityIndicator size="large" color={Colors.primary} />
+      </View>
+    );
+  }
 
   return (
-    <ScreenWrapper>
-      <Header title="Shopping Cart" showBack onBack={() => navigation.goBack()} />
+    <View className="flex-1 bg-surface">
+      {/* Inline header row */}
+      <View className="flex-row items-center justify-between px-4 py-2 border-b border-gray-100">
+        <TouchableOpacity onPress={() => navigation.goBack()} className="flex-row items-center">
+          <MaterialIcons name="arrow-back-ios" size={18} color={Colors.primary} />
+          <Text className="text-sm text-primary font-medium">Quay lại</Text>
+        </TouchableOpacity>
+        <Text className="text-base font-bold text-text-primary">Giỏ hàng</Text>
+        {items.length > 0 ? (
+          <TouchableOpacity onPress={handleClear} className="p-1">
+            <MaterialIcons name="delete-sweep" size={22} color={Colors.textMuted} />
+          </TouchableOpacity>
+        ) : (
+          <View style={{ width: 30 }} />
+        )}
+      </View>
 
-      <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
-        <View className="py-3">
-          {cartItems.map((item) => (
-            <CartItemCard
-              key={item.id}
-              item={item}
-              onQuantityChange={handleQuantityChange}
-              onRemove={handleRemove}
-            />
-          ))}
+      {items.length === 0 ? (
+        <View className="flex-1 items-center justify-center px-6">
+          <MaterialIcons name="shopping-cart" size={72} color={Colors.textMuted} />
+          <Text className="text-xl font-bold text-gray-700 mt-4">Giỏ hàng trống</Text>
+          <Text className="text-sm text-gray-400 mt-2 text-center">
+            Hãy thêm sản phẩm vào giỏ hàng để bắt đầu mua sắm
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ProductListMain')}
+            className="bg-primary mt-6 px-6 py-3 rounded-xl flex-row items-center"
+          >
+            <MaterialIcons name="shopping-bag" size={18} color="#fff" />
+            <Text className="text-white font-bold ml-2">Mua sắm ngay</Text>
+          </TouchableOpacity>
         </View>
-
-        {cartItems.length === 0 ? (
-          <View className="items-center py-12">
-            <MaterialIcons name="shopping-cart" size={64} color={Colors.textMuted} />
-            <Text className="text-lg text-text-muted mt-4">Your cart is empty</Text>
-          </View>
-        ) : null}
-
-        {cartItems.length > 0 ? (
-          <>
-            {/* Promo Code */}
-            <View className="flex-row items-center mb-5">
-              <View className="flex-1 flex-row items-center bg-background rounded-lg border border-border px-3 py-2.5 mr-3">
-                <MaterialIcons name="local-offer" size={20} color={Colors.textMuted} />
-                <TextInput
-                  className="flex-1 text-base text-text-primary ml-2"
-                  placeholder="Promo code"
-                  placeholderTextColor={Colors.textMuted}
-                  value={promoCode}
-                  onChangeText={setPromoCode}
-                />
-              </View>
-              <TouchableOpacity className="bg-primary rounded-lg px-5 py-3">
-                <Text className="text-white font-semibold">Apply</Text>
-              </TouchableOpacity>
+      ) : (
+        <>
+          <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
+            <View className="flex-row items-center justify-between py-3">
+              <Text className="text-sm text-gray-500">{itemCount} sản phẩm trong giỏ</Text>
             </View>
 
+            {items.map((item) => (
+              <CartItemCard
+                key={item.id}
+                item={item}
+                onQuantityChange={updateQuantity}
+                onRemove={handleRemove}
+              />
+            ))}
+
             {/* Price Summary */}
-            <View className="bg-background rounded-xl p-4 mb-5">
-              <View className="flex-row justify-between mb-2">
-                <Text className="text-base text-text-secondary">
-                  Subtotal ({itemCount} items)
-                </Text>
-                <Text className="text-base font-medium text-text-primary">
-                  ${subtotal.toFixed(2)}
+            <View className="bg-gray-50 rounded-xl p-4 mt-2 mb-4">
+              <View className="flex-row justify-between mb-2.5">
+                <Text className="text-sm text-gray-500">Tạm tính ({itemCount} sp)</Text>
+                <Text className="text-sm font-medium text-text-primary">
+                  {formatVND(subtotal)}
                 </Text>
               </View>
-              <View className="flex-row justify-between mb-2">
-                <Text className="text-base text-text-secondary">Shipping</Text>
-                <Text className="text-base font-medium text-accent">Free</Text>
+              <View className="flex-row justify-between mb-2.5">
+                <Text className="text-sm text-gray-500">Phí vận chuyển</Text>
+                <Text className="text-sm font-medium text-green-600">Miễn phí</Text>
               </View>
-              <View className="flex-row justify-between mb-3">
-                <Text className="text-base text-text-secondary">Tax</Text>
-                <Text className="text-base font-medium text-text-primary">
-                  ${tax.toFixed(2)}
-                </Text>
-              </View>
-              <View className="border-t border-border pt-3">
+              <View className="border-t border-gray-200 pt-3 mt-1">
                 <View className="flex-row justify-between">
-                  <Text className="text-lg font-bold text-text-primary">Total Price</Text>
-                  <Text className="text-lg font-bold text-primary">${total.toFixed(2)}</Text>
+                  <Text className="text-base font-bold text-text-primary">Tổng cộng</Text>
+                  <Text className="text-lg font-bold text-primary">{formatVND(subtotal)}</Text>
                 </View>
               </View>
             </View>
 
-            <Button
-              title="Checkout Now"
-              onPress={() => Alert.alert('Checkout', 'Order placed successfully!')}
-              icon="arrow-forward"
-              iconPosition="right"
-            />
+            <View className="h-4" />
+          </ScrollView>
 
-            <View className="h-6" />
-          </>
-        ) : null}
-      </ScrollView>
-    </ScreenWrapper>
+          <View className="px-4 py-3 bg-white border-t border-gray-100">
+            <TouchableOpacity
+              onPress={handleCheckout}
+              className="bg-primary py-4 rounded-xl flex-row items-center justify-center"
+            >
+              <MaterialIcons name="payment" size={20} color="#fff" />
+              <Text className="text-white font-bold text-base ml-2">
+                Thanh toán • {formatVND(subtotal)}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </>
+      )}
+    </View>
   );
 };

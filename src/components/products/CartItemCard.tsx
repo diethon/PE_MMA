@@ -2,12 +2,17 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Colors } from '@/constants';
-import type { CartItem } from '@/constants/mockData';
+import type { CartRow } from '@/services/cartDb';
 
 interface CartItemCardProps {
-  item: CartItem;
-  onQuantityChange?: (id: string, quantity: number) => void;
-  onRemove?: (id: string) => void;
+  item: CartRow;
+  onQuantityChange?: (productId: string, quantity: number) => void;
+  onRemove?: (productId: string) => void;
+}
+
+function formatVND(num: number): string {
+  if (!num) return '';
+  return num.toLocaleString('vi-VN') + '₫';
 }
 
 export const CartItemCard: React.FC<CartItemCardProps> = ({
@@ -16,47 +21,44 @@ export const CartItemCard: React.FC<CartItemCardProps> = ({
   onRemove,
 }) => {
   return (
-    <View className="flex-row bg-card rounded-lg p-3 mb-3 border border-border">
+    <View className="flex-row bg-card rounded-xl p-3 mb-3 border border-border">
       <Image
-        source={{ uri: item.product.image }}
-        className="w-20 h-20 rounded-lg"
-        resizeMode="cover"
+        source={{ uri: item.image }}
+        className="rounded-lg"
+        style={{ width: 90, height: 90 }}
+        resizeMode="contain"
       />
       <View className="flex-1 ml-3">
         <View className="flex-row items-start justify-between">
-          <View className="flex-1">
-            <Text className="text-base font-semibold text-text-primary" numberOfLines={1}>
-              {item.product.name}
+          <View className="flex-1 mr-2">
+            <Text className="text-xs text-primary font-medium">{item.brand}</Text>
+            <Text className="text-sm font-semibold text-text-primary mt-0.5" numberOfLines={2}>
+              {item.name}
             </Text>
-            {item.selectedColor ? (
-              <Text className="text-sm text-text-secondary mt-0.5">
-                Color: {item.selectedColor}
-              </Text>
-            ) : null}
           </View>
-          <TouchableOpacity onPress={() => onRemove?.(item.id)} className="p-1">
-            <MaterialIcons name="delete" size={20} color={Colors.error} />
+          <TouchableOpacity onPress={() => onRemove?.(item.productId)} className="p-1">
+            <MaterialIcons name="delete-outline" size={20} color={Colors.error} />
           </TouchableOpacity>
         </View>
         <View className="flex-row items-center justify-between mt-2">
-          <Text className="text-base font-bold text-text-primary">
-            ${item.product.price.toFixed(2)}
+          <Text className="text-base font-bold text-primary">
+            {item.price || formatVND(item.priceNum) || 'Liên hệ'}
           </Text>
-          <View className="flex-row items-center bg-background rounded-lg">
+          <View className="flex-row items-center bg-gray-50 rounded-lg border border-gray-200">
             <TouchableOpacity
-              onPress={() => onQuantityChange?.(item.id, Math.max(1, item.quantity - 1))}
+              onPress={() => onQuantityChange?.(item.productId, Math.max(1, item.quantity - 1))}
               className="px-2.5 py-1.5"
             >
-              <MaterialIcons name="remove" size={18} color={Colors.textSecondary} />
+              <MaterialIcons name="remove" size={16} color={Colors.textSecondary} />
             </TouchableOpacity>
-            <Text className="text-base font-semibold text-text-primary px-3">
+            <Text className="text-sm font-bold text-text-primary px-2.5">
               {item.quantity}
             </Text>
             <TouchableOpacity
-              onPress={() => onQuantityChange?.(item.id, item.quantity + 1)}
+              onPress={() => onQuantityChange?.(item.productId, item.quantity + 1)}
               className="px-2.5 py-1.5"
             >
-              <MaterialIcons name="add" size={18} color={Colors.primary} />
+              <MaterialIcons name="add" size={16} color={Colors.primary} />
             </TouchableOpacity>
           </View>
         </View>

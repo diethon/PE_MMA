@@ -6,3 +6,7 @@ export { ProductFormScreen } from './ProductFormScreen';
 export { ProductDetailScreen } from './ProductDetailScreen';
 export { CartScreen } from './CartScreen';
 export { DashboardScreen } from './DashboardScreen';
+export { OrderHistoryScreen } from './OrderHistoryScreen';
+export { ProfileScreen } from './ProfileScreen';
+export { EditProfileScreen } from './EditProfileScreen';
+export { FavoritesScreen } from './FavoritesScreen';
