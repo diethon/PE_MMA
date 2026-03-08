@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,9 @@ import {
   FlatList,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { SearchBar } from '@/components/ui';
 import { ProductCard } from '@/components/products';
 import { Colors } from '@/constants';
-import { allProducts, categories } from '@/constants/productData';
+import { allProducts, categories, accessorySubCategories } from '@/constants/productData';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { AppStackParamList } from '../navigation/types';
@@ -30,13 +29,32 @@ const phoneHighlights = allProducts
   .sort((a, b) => b.soldNum - a.soldNum)
   .slice(0, 6);
 
+const laptopHighlights = allProducts
+  .filter((p) => p.category === 'laptop' && p.priceNum > 0)
+  .sort((a, b) => b.soldNum - a.soldNum)
+  .slice(0, 6);
+
 const watchHighlights = allProducts
   .filter((p) => p.category === 'watch' && p.priceNum > 0)
   .sort((a, b) => b.soldNum - a.soldNum)
   .slice(0, 6);
 
+const earphoneHighlights = allProducts
+  .filter((p) => p.category === 'earphone' && p.priceNum > 0)
+  .sort((a, b) => b.soldNum - a.soldNum)
+  .slice(0, 6);
+
+const powerbankHighlights = allProducts
+  .filter((p) => p.category === 'powerbank' && p.priceNum > 0)
+  .sort((a, b) => b.soldNum - a.soldNum)
+  .slice(0, 6);
+
+const adapterHighlights = allProducts
+  .filter((p) => p.category === 'adapter' && p.priceNum > 0)
+  .sort((a, b) => b.soldNum - a.soldNum)
+  .slice(0, 6);
+
 export const HomeScreen: React.FC = () => {
-  const [search, setSearch] = useState('');
   const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
 
   const navigateToProduct = (id: string) => {
@@ -68,11 +86,6 @@ export const HomeScreen: React.FC = () => {
           </View>
         </View>
 
-        {/* Search Bar */}
-        <View className="px-4 mb-5">
-          <SearchBar value={search} onChangeText={setSearch} placeholder="Tìm kiếm sản phẩm..." onMicPress={() => {}} />
-        </View>
-
         {/* Categories */}
         <View className="mb-5">
           <View className="flex-row items-center justify-between px-4 mb-3">
@@ -81,17 +94,14 @@ export const HomeScreen: React.FC = () => {
               <Text className="text-sm text-primary font-medium">Xem tất cả</Text>
             </TouchableOpacity>
           </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 16 }}
-          >
-            {categories.filter((c) => c.key !== 'all').map((cat) => (
+          <View className="flex-row flex-wrap px-4">
+            {[...categories.filter((c) => c.key !== 'all'), ...accessorySubCategories].map((cat) => (
               <TouchableOpacity
                 key={cat.key}
-                onPress={() => navigation.navigate('ProductListMain')}
+                onPress={() => navigation.navigate('ProductListMain', { category: cat.key })}
                 activeOpacity={0.7}
-                className="items-center mr-5"
+                style={{ width: '25%', marginBottom: 12 }}
+                className="items-center"
               >
                 <View className="w-14 h-14 rounded-2xl items-center justify-center mb-1.5 bg-primary-light">
                   <MaterialIcons
@@ -100,10 +110,10 @@ export const HomeScreen: React.FC = () => {
                     color={Colors.primary}
                   />
                 </View>
-                <Text className="text-xs font-medium text-text-secondary">{cat.label}</Text>
+                <Text className="text-xs font-medium text-text-secondary text-center" numberOfLines={1}>{cat.label}</Text>
               </TouchableOpacity>
             ))}
-          </ScrollView>
+          </View>
         </View>
 
         {/* Hot Deals */}
@@ -114,7 +124,7 @@ export const HomeScreen: React.FC = () => {
                 <MaterialIcons name="local-fire-department" size={20} color="#EF4444" />
                 <Text className="text-lg font-bold text-text-primary ml-1">Giảm giá hot</Text>
               </View>
-              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'all' })}>
                 <Text className="text-sm text-primary font-medium">Xem thêm</Text>
               </TouchableOpacity>
             </View>
@@ -173,7 +183,7 @@ export const HomeScreen: React.FC = () => {
                 <MaterialIcons name="trending-up" size={20} color={Colors.primary} />
                 <Text className="text-lg font-bold text-text-primary ml-1">Bán chạy nhất</Text>
               </View>
-              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'all' })}>
                 <Text className="text-sm text-primary font-medium">Xem thêm</Text>
               </TouchableOpacity>
             </View>
@@ -202,7 +212,7 @@ export const HomeScreen: React.FC = () => {
                 <MaterialIcons name="smartphone" size={20} color={Colors.primary} />
                 <Text className="text-lg font-bold text-text-primary ml-1">Điện thoại nổi bật</Text>
               </View>
-              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'phone' })}>
                 <Text className="text-sm text-primary font-medium">Xem thêm</Text>
               </TouchableOpacity>
             </View>
@@ -250,6 +260,62 @@ export const HomeScreen: React.FC = () => {
           </View>
         ) : null}
 
+        {/* Laptop Section */}
+        {laptopHighlights.length > 0 ? (
+          <View className="mb-5">
+            <View className="flex-row items-center justify-between px-4 mb-3">
+              <View className="flex-row items-center">
+                <MaterialIcons name="laptop" size={20} color={Colors.primary} />
+                <Text className="text-lg font-bold text-text-primary ml-1">Laptop nổi bật</Text>
+              </View>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'laptop' })}>
+                <Text className="text-sm text-primary font-medium">Xem thêm</Text>
+              </TouchableOpacity>
+            </View>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 12 }}
+            >
+              {laptopHighlights.map((product, idx) => (
+                <TouchableOpacity
+                  key={`${product.id}-laptop-${idx}`}
+                  onPress={() => navigateToProduct(product.id)}
+                  activeOpacity={0.8}
+                  className="bg-card border border-border rounded-xl mr-3 overflow-hidden"
+                  style={{ width: 180 }}
+                >
+                  <Image
+                    source={{ uri: product.image }}
+                    style={{ width: 180, height: 130 }}
+                    resizeMode="contain"
+                  />
+                  <View className="p-2.5">
+                    <Text className="text-xs text-primary font-medium">{product.brand}</Text>
+                    <Text className="text-sm font-semibold text-text-primary mt-0.5" numberOfLines={2}>
+                      {product.name}
+                    </Text>
+                    {product.price ? (
+                      <Text className="text-sm font-bold text-primary mt-1">{product.price}</Text>
+                    ) : null}
+                    {product.rating ? (
+                      <View className="flex-row items-center mt-1">
+                        <MaterialIcons name="star" size={12} color={Colors.star} />
+                        <Text className="text-xs text-gray-500 ml-0.5">{product.rating}</Text>
+                        {product.sold ? (
+                          <Text className="text-xs text-gray-400 ml-1.5">
+                            {product.sold.replace('• ', '')}
+                          </Text>
+                        ) : null}
+                      </View>
+                    ) : null}
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        ) : null}
+
         {/* Watch Section */}
         {watchHighlights.length > 0 ? (
           <View className="mb-5">
@@ -258,7 +324,7 @@ export const HomeScreen: React.FC = () => {
                 <MaterialIcons name="watch" size={20} color={Colors.primary} />
                 <Text className="text-lg font-bold text-text-primary ml-1">Đồng hồ thông minh</Text>
               </View>
-              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'watch' })}>
                 <Text className="text-sm text-primary font-medium">Xem thêm</Text>
               </TouchableOpacity>
             </View>
@@ -297,6 +363,108 @@ export const HomeScreen: React.FC = () => {
                             {product.sold.replace('• ', '')}
                           </Text>
                         ) : null}
+                      </View>
+                    ) : null}
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        ) : null}
+
+        {/* Earphone Section */}
+        {earphoneHighlights.length > 0 ? (
+          <View className="mb-5">
+            <View className="flex-row items-center justify-between px-4 mb-3">
+              <View className="flex-row items-center">
+                <MaterialIcons name="headphones" size={20} color={Colors.primary} />
+                <Text className="text-lg font-bold text-text-primary ml-1">Tai nghe</Text>
+              </View>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'earphone' })}>
+                <Text className="text-sm text-primary font-medium">Xem thêm</Text>
+              </TouchableOpacity>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 12 }}>
+              {earphoneHighlights.map((product, idx) => (
+                <TouchableOpacity key={`${product.id}-ear-${idx}`} onPress={() => navigateToProduct(product.id)} activeOpacity={0.8} className="bg-card border border-border rounded-xl mr-3 overflow-hidden" style={{ width: 160 }}>
+                  <Image source={{ uri: product.image }} style={{ width: 160, height: 130 }} resizeMode="contain" />
+                  <View className="p-2.5">
+                    <Text className="text-xs text-primary font-medium">{product.brand}</Text>
+                    <Text className="text-sm font-semibold text-text-primary mt-0.5" numberOfLines={2}>{product.name}</Text>
+                    {product.price ? <Text className="text-sm font-bold text-primary mt-1">{product.price}</Text> : null}
+                    {product.rating ? (
+                      <View className="flex-row items-center mt-1">
+                        <MaterialIcons name="star" size={12} color={Colors.star} />
+                        <Text className="text-xs text-gray-500 ml-0.5">{product.rating}</Text>
+                        {product.sold ? <Text className="text-xs text-gray-400 ml-1.5">{product.sold.replace('• ', '')}</Text> : null}
+                      </View>
+                    ) : null}
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        ) : null}
+
+        {/* Powerbank Section */}
+        {powerbankHighlights.length > 0 ? (
+          <View className="mb-5">
+            <View className="flex-row items-center justify-between px-4 mb-3">
+              <View className="flex-row items-center">
+                <MaterialIcons name="battery-charging-full" size={20} color={Colors.primary} />
+                <Text className="text-lg font-bold text-text-primary ml-1">Sạc dự phòng</Text>
+              </View>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'powerbank' })}>
+                <Text className="text-sm text-primary font-medium">Xem thêm</Text>
+              </TouchableOpacity>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 12 }}>
+              {powerbankHighlights.map((product, idx) => (
+                <TouchableOpacity key={`${product.id}-pb-${idx}`} onPress={() => navigateToProduct(product.id)} activeOpacity={0.8} className="bg-card border border-border rounded-xl mr-3 overflow-hidden" style={{ width: 160 }}>
+                  <Image source={{ uri: product.image }} style={{ width: 160, height: 130 }} resizeMode="contain" />
+                  <View className="p-2.5">
+                    <Text className="text-xs text-primary font-medium">{product.brand}</Text>
+                    <Text className="text-sm font-semibold text-text-primary mt-0.5" numberOfLines={2}>{product.name}</Text>
+                    {product.price ? <Text className="text-sm font-bold text-primary mt-1">{product.price}</Text> : null}
+                    {product.rating ? (
+                      <View className="flex-row items-center mt-1">
+                        <MaterialIcons name="star" size={12} color={Colors.star} />
+                        <Text className="text-xs text-gray-500 ml-0.5">{product.rating}</Text>
+                        {product.sold ? <Text className="text-xs text-gray-400 ml-1.5">{product.sold.replace('• ', '')}</Text> : null}
+                      </View>
+                    ) : null}
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        ) : null}
+
+        {/* Adapter Section */}
+        {adapterHighlights.length > 0 ? (
+          <View className="mb-5">
+            <View className="flex-row items-center justify-between px-4 mb-3">
+              <View className="flex-row items-center">
+                <MaterialIcons name="power" size={20} color={Colors.primary} />
+                <Text className="text-lg font-bold text-text-primary ml-1">Adapter sạc</Text>
+              </View>
+              <TouchableOpacity onPress={() => navigation.navigate('ProductListMain', { category: 'adapter' })}>
+                <Text className="text-sm text-primary font-medium">Xem thêm</Text>
+              </TouchableOpacity>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 12 }}>
+              {adapterHighlights.map((product, idx) => (
+                <TouchableOpacity key={`${product.id}-adp-${idx}`} onPress={() => navigateToProduct(product.id)} activeOpacity={0.8} className="bg-card border border-border rounded-xl mr-3 overflow-hidden" style={{ width: 160 }}>
+                  <Image source={{ uri: product.image }} style={{ width: 160, height: 130 }} resizeMode="contain" />
+                  <View className="p-2.5">
+                    <Text className="text-xs text-primary font-medium">{product.brand}</Text>
+                    <Text className="text-sm font-semibold text-text-primary mt-0.5" numberOfLines={2}>{product.name}</Text>
+                    {product.price ? <Text className="text-sm font-bold text-primary mt-1">{product.price}</Text> : null}
+                    {product.rating ? (
+                      <View className="flex-row items-center mt-1">
+                        <MaterialIcons name="star" size={12} color={Colors.star} />
+                        <Text className="text-xs text-gray-500 ml-0.5">{product.rating}</Text>
+                        {product.sold ? <Text className="text-xs text-gray-400 ml-1.5">{product.sold.replace('• ', '')}</Text> : null}
                       </View>
                     ) : null}
                   </View>

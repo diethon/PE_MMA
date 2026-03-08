@@ -86,44 +86,46 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
       style={{ flex: 1 }}
     >
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-        {/* Top Nav */}
-        <View className="flex-row items-center justify-between px-5 py-3">
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <MaterialIcons name="chevron-left" size={28} color="#fff" />
-          </TouchableOpacity>
-          <View className="flex-row items-center">
-            <Text className="text-white/80 text-sm">Đã có tài khoản?</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Login')}
-              className="ml-2 bg-white/20 rounded-md px-3 py-1.5"
-            >
-              <Text className="text-white text-sm font-semibold">Đăng nhập</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* Brand */}
-        <Text className="text-white text-3xl font-bold text-center my-4 italic">
-          Aura Technology
-        </Text>
-
-        {/* White Form Card */}
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: '#ffffff',
-            borderTopLeftRadius: 28,
-            borderTopRightRadius: 28,
-          }}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={{ flex: 1 }}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
         >
-          <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={{ flex: 1 }}
+          {/* Top Nav */}
+          <View className="flex-row items-center justify-between px-5 py-3">
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <MaterialIcons name="chevron-left" size={28} color="#fff" />
+            </TouchableOpacity>
+            <View className="flex-row items-center">
+              <Text className="text-white/80 text-sm">Đã có tài khoản?</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Login')}
+                className="ml-2 bg-white/20 rounded-md px-3 py-1.5"
+              >
+                <Text className="text-white text-sm font-semibold">Đăng nhập</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Brand */}
+          <Text className="text-white text-3xl font-bold text-center my-4 italic">
+            Aura Technology
+          </Text>
+
+          {/* White Form Card */}
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: '#ffffff',
+              borderTopLeftRadius: 28,
+              borderTopRightRadius: 28,
+            }}
           >
             <ScrollView
               style={{ flex: 1 }}
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled"
+              keyboardDismissMode="interactive"
               contentContainerStyle={{ paddingBottom: 40 }}
             >
               <View className="px-6 pt-8">
@@ -270,8 +272,8 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
                 </TouchableOpacity>
               </View>
             </ScrollView>
-          </KeyboardAvoidingView>
-        </View>
+          </View>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </LinearGradient>
   );

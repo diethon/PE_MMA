@@ -8,11 +8,13 @@ import {
   Modal,
   Pressable,
   ScrollView,
+  StyleSheet,
+  Platform,
 } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MaterialIcons } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CommonActions, useNavigation } from '@react-navigation/native';
 
 import { HomeScreen } from '@/screens/HomeScreen';
@@ -29,7 +31,6 @@ import { Colors } from '@/constants';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCart } from '@/contexts/CartContext';
 import { useFavorites } from '@/contexts/FavoritesContext';
-import { Badge } from '@/components/ui';
 import type { TabParamList, AppStackParamList } from './types';
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -54,13 +55,6 @@ interface AppHeaderProps {
 
 const AppHeader: React.FC<AppHeaderProps> = ({ title, showBack, onBack }) => {
   const { openDrawer } = useDrawer();
-  const { cartCount } = useCart();
-
-  const goToCart = () => {
-    if (_innerNav) {
-      _innerNav.navigate('HomeTab', { screen: 'Cart' });
-    }
-  };
 
   return (
     <View className="flex-row items-center justify-between px-4 py-2.5 bg-white border-b border-gray-100">
@@ -76,13 +70,6 @@ const AppHeader: React.FC<AppHeaderProps> = ({ title, showBack, onBack }) => {
       <Text className="text-lg font-bold text-text-primary flex-1" numberOfLines={1}>
         {title}
       </Text>
-      <TouchableOpacity
-        onPress={goToCart}
-        className="relative p-1"
-      >
-        <MaterialIcons name="shopping-bag" size={24} color={Colors.textPrimary} />
-        <Badge count={cartCount} />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -93,6 +80,7 @@ const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeMain" component={HomeScreen} />
+      <Stack.Screen name="ProductListMain" component={ProductListScreen} />
       <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
       <Stack.Screen name="Cart" component={CartScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
@@ -116,6 +104,13 @@ const FavoritesStack = () => (
   </Stack.Navigator>
 );
 
+const CartStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="Cart" component={CartScreen} />
+    <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+  </Stack.Navigator>
+);
+
 const RevenueStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="RevenueMain" component={DashboardScreen} />
@@ -135,6 +130,192 @@ const ProfileStack = () => (
     <Stack.Screen name="EditProfile" component={EditProfileScreen} />
   </Stack.Navigator>
 );
+
+/* ── Icon mapping for tabs ── */
+const TAB_ICONS: Record<string, { active: keyof typeof MaterialIcons.glyphMap; inactive: keyof typeof MaterialIcons.glyphMap }> = {
+  HomeTab: { active: 'home', inactive: 'home-filled' },
+  ProductsTab: { active: 'search', inactive: 'search' },
+  FavoritesTab: { active: 'favorite', inactive: 'favorite-border' },
+  OrdersTab: { active: 'notifications', inactive: 'notifications-none' },
+  RevenueTab: { active: 'bar-chart', inactive: 'bar-chart' },
+  ProfileTab: { active: 'person', inactive: 'person-outline' },
+  CartTab: { active: 'shopping-cart', inactive: 'shopping-cart' },
+};
+
+/* ── Custom Tab Bar ── */
+const CustomTabBar: React.FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
+  const { cartCount } = useCart();
+  const insets = useSafeAreaInsets();
+
+  const hiddenTabs = new Set(['CartTab', 'ProfileTab']);
+  const mainRoutes = state.routes.filter((r) => !hiddenTabs.has(r.name));
+  const cartRoute = state.routes.find((r) => r.name === 'CartTab');
+  const cartIndex = state.routes.findIndex((r) => r.name === 'CartTab');
+
+  return (
+    <View
+      style={[
+        tabBarStyles.container,
+        { paddingBottom: Math.max(insets.bottom, 8) },
+      ]}
+    >
+      <View style={tabBarStyles.pillContainer}>
+        {mainRoutes.map((route) => {
+          const realIndex = state.routes.indexOf(route);
+          const isFocused = state.index === realIndex;
+          const icons = TAB_ICONS[route.name] || { active: 'circle', inactive: 'circle' };
+          const { options } = descriptors[route.key];
+
+          const onPress = () => {
+            const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
+
+          return (
+            <TouchableOpacity
+              key={route.key}
+              onPress={onPress}
+              activeOpacity={0.7}
+              style={[
+                tabBarStyles.pillTab,
+                isFocused ? tabBarStyles.pillTabActive : tabBarStyles.pillTabInactive,
+              ]}
+            >
+              <MaterialIcons
+                name={isFocused ? icons.active : icons.inactive}
+                size={22}
+                color={isFocused ? '#1A1A1A' : '#9CA3AF'}
+              />
+              {isFocused && (
+                <Text style={tabBarStyles.pillTabLabel} numberOfLines={1}>
+                  {options.tabBarLabel as string || route.name}
+                </Text>
+              )}
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+
+      {cartRoute && (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('CartTab')}
+          activeOpacity={0.7}
+          style={[
+            tabBarStyles.cartButton,
+            state.index === cartIndex && tabBarStyles.cartButtonActive,
+          ]}
+        >
+          <View>
+            <MaterialIcons
+              name="shopping-cart"
+              size={22}
+              color={state.index === cartIndex ? '#fff' : '#4B5563'}
+            />
+            {cartCount > 0 && (
+              <View style={tabBarStyles.cartBadge}>
+                <Text style={tabBarStyles.cartBadgeText}>
+                  {cartCount > 99 ? '99+' : cartCount}
+                </Text>
+              </View>
+            )}
+          </View>
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+};
+
+const tabBarStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 14,
+    paddingTop: 8,
+    paddingBottom: 8,
+    backgroundColor: 'transparent',
+    borderTopWidth: 0,
+  },
+  pillContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    backgroundColor: 'rgba(255,255,255,0.95)',
+    borderRadius: 32,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    marginRight: 10,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOpacity: 0.08,
+        shadowRadius: 12,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: { elevation: 6 },
+    }),
+  },
+  pillTab: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    borderRadius: 26,
+  },
+  pillTabInactive: {
+    paddingHorizontal: 14,
+  },
+  pillTabActive: {
+    backgroundColor: '#F0F0F0',
+    paddingHorizontal: 14,
+  },
+  pillTabLabel: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: '#1A1A1A',
+    marginLeft: 6,
+  },
+  cartButton: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: 'rgba(255,255,255,0.95)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
+        shadowRadius: 12,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: { elevation: 6 },
+    }),
+  },
+  cartButtonActive: {
+    backgroundColor: Colors.primary,
+  },
+  cartBadge: {
+    position: 'absolute',
+    top: -5,
+    right: -8,
+    backgroundColor: '#EF4444',
+    borderRadius: 10,
+    minWidth: 18,
+    height: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 4,
+  },
+  cartBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 10,
+    fontWeight: '700',
+  },
+});
 
 /* ── Drawer Content ── */
 interface DrawerProps {
@@ -304,7 +485,6 @@ const DrawerContent: React.FC<DrawerProps> = ({ visible, slideAnim, overlayAnim,
 /* ── Main BottomTabNavigator ── */
 export const BottomTabNavigator: React.FC = () => {
   const { isSeller } = useAuth();
-  const { favCount } = useFavorites();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const slideAnim = useRef(new Animated.Value(-DRAWER_WIDTH)).current;
@@ -328,111 +508,57 @@ export const BottomTabNavigator: React.FC = () => {
   return (
     <DrawerContext.Provider value={{ openDrawer }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }} edges={['top']}>
-        {/* Persistent Header */}
         <AppHeader title="Aura Tech" />
 
-        {/* Tab Navigator */}
         <Tab.Navigator
-          screenOptions={{
-            headerShown: false,
-            tabBarActiveTintColor: Colors.primary,
-            tabBarInactiveTintColor: Colors.textMuted,
-            tabBarStyle: {
-              backgroundColor: Colors.surface,
-              borderTopColor: Colors.border,
-              height: 60,
-              paddingBottom: 8,
-              paddingTop: 6,
-            },
-            tabBarLabelStyle: {
-              fontSize: 11,
-              fontWeight: '600',
-            },
-          }}
+          tabBar={(props) => <CustomTabBar {...props} />}
+          screenOptions={{ headerShown: false }}
         >
           <Tab.Screen
             name="HomeTab"
             component={HomeStack}
-            options={{
-              tabBarLabel: 'Trang chủ',
-              tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="home" size={size} color={color} />
-              ),
-            }}
+            options={{ tabBarLabel: 'Home' }}
           />
-          {!isSeller ? (
+          {!isSeller && (
             <Tab.Screen
               name="ProductsTab"
               component={ProductsStack}
-              options={{
-                tabBarLabel: 'Sản phẩm',
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialIcons name="grid-view" size={size} color={color} />
-                ),
-              }}
+              options={{ tabBarLabel: 'Tìm kiếm' }}
             />
-          ) : null}
-          {!isSeller ? (
+          )}
+          {!isSeller && (
             <Tab.Screen
               name="FavoritesTab"
               component={FavoritesStack}
-              options={{
-                tabBarLabel: 'Yêu thích',
-                tabBarIcon: ({ color, size }) => (
-                  <View>
-                    <MaterialIcons name="favorite" size={size} color={color} />
-                    {favCount > 0 ? (
-                      <View
-                        className="absolute -top-1 -right-2 bg-red-500 rounded-full items-center justify-center"
-                        style={{ width: 16, height: 16 }}
-                      >
-                        <Text className="text-white text-[8px] font-bold">
-                          {favCount > 99 ? '99+' : favCount}
-                        </Text>
-                      </View>
-                    ) : null}
-                  </View>
-                ),
-              }}
+              options={{ tabBarLabel: 'Yêu thích' }}
             />
-          ) : null}
+          )}
           {isSeller ? (
             <Tab.Screen
               name="RevenueTab"
               component={RevenueStack}
-              options={{
-                tabBarLabel: 'Doanh thu',
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialIcons name="bar-chart" size={size} color={color} />
-                ),
-              }}
+              options={{ tabBarLabel: 'Doanh thu' }}
             />
           ) : (
             <Tab.Screen
               name="OrdersTab"
               component={OrdersStack}
-              options={{
-                tabBarLabel: 'Đơn mua',
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialIcons name="receipt-long" size={size} color={color} />
-                ),
-              }}
+              options={{ tabBarLabel: 'Thông báo' }}
             />
           )}
           <Tab.Screen
             name="ProfileTab"
             component={ProfileStack}
-            options={{
-              tabBarLabel: 'Tài khoản',
-              tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="person" size={size} color={color} />
-              ),
-            }}
+            options={{ tabBarLabel: 'Tài khoản' }}
+          />
+          <Tab.Screen
+            name="CartTab"
+            component={CartStack}
+            options={{ tabBarLabel: 'Giỏ hàng' }}
           />
         </Tab.Navigator>
       </SafeAreaView>
 
-      {/* Drawer */}
       <DrawerContent
         visible={drawerOpen}
         slideAnim={slideAnim}

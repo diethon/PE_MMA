@@ -21,6 +21,7 @@ interface CartContextType {
   removeItem: (productId: string) => Promise<void>;
   clearCart: () => Promise<void>;
   checkout: () => Promise<string>;
+  checkoutSelected: (selectedProductIds: string[]) => Promise<string>;
   refresh: () => Promise<void>;
 }
 
@@ -110,9 +111,23 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return orderId;
   }, [userId, refresh]);
 
+  const checkoutSelected = useCallback(async (selectedProductIds: string[]): Promise<string> => {
+    if (!userId) throw new Error('Not logged in');
+    if (selectedProductIds.length === 0) throw new Error('No items selected');
+    const currentItems = await getCartItems(userId);
+    const selectedItems = currentItems.filter((item) => selectedProductIds.includes(item.productId));
+    if (selectedItems.length === 0) throw new Error('No matching items');
+    const orderId = await dbCheckout(userId, selectedItems);
+    for (const item of selectedItems) {
+      await dbRemove(userId, item.productId);
+    }
+    await refresh();
+    return orderId;
+  }, [userId, refresh]);
+
   return (
     <CartContext.Provider
-      value={{ items, cartCount, loading, addProduct, updateQuantity, removeItem, clearCart, checkout, refresh }}
+      value={{ items, cartCount, loading, addProduct, updateQuantity, removeItem, clearCart, checkout, checkoutSelected, refresh }}
     >
       {children}
     </CartContext.Provider>

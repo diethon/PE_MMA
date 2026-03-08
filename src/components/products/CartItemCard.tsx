@@ -6,6 +6,8 @@ import type { CartRow } from '@/services/cartDb';
 
 interface CartItemCardProps {
   item: CartRow;
+  selected?: boolean;
+  onToggleSelect?: (productId: string) => void;
   onQuantityChange?: (productId: string, quantity: number) => void;
   onRemove?: (productId: string) => void;
 }
@@ -17,15 +19,30 @@ function formatVND(num: number): string {
 
 export const CartItemCard: React.FC<CartItemCardProps> = ({
   item,
+  selected = false,
+  onToggleSelect,
   onQuantityChange,
   onRemove,
 }) => {
   return (
-    <View className="flex-row bg-card rounded-xl p-3 mb-3 border border-border">
+    <View className="flex-row bg-card rounded-xl p-3 mb-3 border border-border" style={selected ? { borderColor: Colors.primary, borderWidth: 1.5 } : undefined}>
+      {/* Checkbox */}
+      <TouchableOpacity
+        onPress={() => onToggleSelect?.(item.productId)}
+        className="items-center justify-center mr-2.5"
+        activeOpacity={0.6}
+      >
+        <MaterialIcons
+          name={selected ? 'check-box' : 'check-box-outline-blank'}
+          size={24}
+          color={selected ? Colors.primary : '#CBD5E1'}
+        />
+      </TouchableOpacity>
+
       <Image
         source={{ uri: item.image }}
         className="rounded-lg"
-        style={{ width: 90, height: 90 }}
+        style={{ width: 80, height: 80 }}
         resizeMode="contain"
       />
       <View className="flex-1 ml-3">

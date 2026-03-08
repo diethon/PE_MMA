@@ -3,8 +3,11 @@ import laptopData from '../../data/laptop/laptop_data.json';
 import tabletData from '../../data/tablet/tablet_data.json';
 import watchKidData from '../../data/watch/watch_data_kid.json';
 import watchYoungsterData from '../../data/watch/watch_data_youngster.json';
+import earphoneData from '../../data/accessory/earphone_data.json';
+import powerbankData from '../../data/accessory/powerbank_data.json';
+import adapterData from '../../data/accessory/adapter_data.json';
 
-export type CategoryType = 'all' | 'phone' | 'laptop' | 'tablet' | 'watch';
+export type CategoryType = 'all' | 'phone' | 'laptop' | 'tablet' | 'watch' | 'earphone' | 'powerbank' | 'adapter';
 
 export interface UnifiedProduct {
   id: string;
@@ -117,12 +120,36 @@ function normalizeWatch(items: any[]): UnifiedProduct[] {
   }));
 }
 
+function normalizeAccessory(items: any[], cat: CategoryType): UnifiedProduct[] {
+  return items
+    .filter((p) => p.name)
+    .map((p) => ({
+      id: p.id,
+      name: p.name ?? '',
+      brand: p.brand ?? '',
+      price: p.price ?? null,
+      priceNum: parsePrice(p.price),
+      oldPrice: p.old_price ?? null,
+      discount: p.discount ?? null,
+      rating: p.rating ?? null,
+      sold: p.sold ?? null,
+      soldNum: parseSold(p.sold),
+      image: p.image ?? '',
+      link: p.link ?? '',
+      specs: [p.category, p.color].filter(Boolean) as string[],
+      category: cat,
+    }));
+}
+
 export const allProducts: UnifiedProduct[] = [
   ...normalizePhone(phoneData),
   ...normalizeLaptop(laptopData),
   ...normalizeTablet(tabletData),
   ...normalizeWatch(watchKidData),
   ...normalizeWatch(watchYoungsterData),
+  ...normalizeAccessory(earphoneData, 'earphone'),
+  ...normalizeAccessory(powerbankData, 'powerbank'),
+  ...normalizeAccessory(adapterData, 'adapter'),
 ];
 
 export function getBrands(category: CategoryType): string[] {
@@ -137,6 +164,12 @@ export const categories: { key: CategoryType; label: string; icon: string }[] = 
   { key: 'laptop', label: 'Laptop', icon: 'laptop' },
   { key: 'tablet', label: 'Tablet', icon: 'tablet' },
   { key: 'watch', label: 'Watch', icon: 'watch' },
+];
+
+export const accessorySubCategories: { key: CategoryType; label: string; icon: string }[] = [
+  { key: 'earphone', label: 'Tai nghe', icon: 'headphones' },
+  { key: 'powerbank', label: 'Sạc dự phòng', icon: 'battery-charging-full' },
+  { key: 'adapter', label: 'Adapter sạc', icon: 'power' },
 ];
 
 export type SortOption = 'default' | 'price_asc' | 'price_desc' | 'sold_desc' | 'brand_asc';

@@ -8,6 +8,7 @@ export type TabParamList = {
   HomeTab: undefined;
   ProductsTab: undefined;
   FavoritesTab: undefined;
+  CartTab: undefined;
   RevenueTab: undefined;
   OrdersTab: undefined;
   ProfileTab: undefined;
@@ -15,7 +16,7 @@ export type TabParamList = {
 
 export type AppStackParamList = {
   HomeMain: undefined;
-  ProductListMain: undefined;
+  ProductListMain: { category?: string } | undefined;
   FavoritesMain: undefined;
   OrdersMain: undefined;
   RevenueMain: undefined;

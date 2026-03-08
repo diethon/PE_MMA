@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import {
   View,
   Text,
@@ -13,23 +13,38 @@ import { ProductCard } from '@/components/products';
 import { Colors } from '@/constants';
 import {
   categories,
+  accessorySubCategories,
   sortOptions,
   filterAndSort,
   getBrands,
 } from '@/constants/productData';
 import type { CategoryType, SortOption, UnifiedProduct } from '@/constants/productData';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute, type RouteProp } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { AppStackParamList } from '../navigation/types';
 
 export const ProductListScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+  const route = useRoute<RouteProp<AppStackParamList, 'ProductListMain'>>();
+  const initialCategory = (route.params?.category as CategoryType) || 'all';
+
+  const accessoryKeys = useMemo(() => new Set(accessorySubCategories.map((s) => s.key)), []);
+  const isAccessoryType = useCallback((cat: CategoryType) => accessoryKeys.has(cat), [accessoryKeys]);
+
   const [search, setSearch] = useState('');
-  const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
+  const [activeCategory, setActiveCategory] = useState<CategoryType>(initialCategory);
   const [activeBrand, setActiveBrand] = useState<string | null>(null);
   const [activeSort, setActiveSort] = useState<SortOption>('default');
   const [showSortModal, setShowSortModal] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('grid');
+  const [accessoryExpanded, setAccessoryExpanded] = useState(() => isAccessoryType(initialCategory));
+
+  useEffect(() => {
+    const cat = (route.params?.category as CategoryType) || 'all';
+    setActiveCategory(cat);
+    setActiveBrand(null);
+    if (isAccessoryType(cat)) setAccessoryExpanded(true);
+  }, [route.params?.category, isAccessoryType]);
 
   const brands = useMemo(() => getBrands(activeCategory), [activeCategory]);
 
@@ -68,33 +83,112 @@ export const ProductListScreen: React.FC = () => {
       </View>
 
       {/* Category Tabs */}
-      <View className="flex-row px-3 py-2">
-        {categories.map((cat) => {
-          const isActive = activeCategory === cat.key;
-          return (
-            <TouchableOpacity
-              key={cat.key}
-              onPress={() => handleCategoryChange(cat.key)}
-              style={{ flex: 1, marginHorizontal: 3 }}
+      <View className="px-3 py-2">
+        <View className="flex-row flex-wrap">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.key;
+            return (
+              <TouchableOpacity
+                key={cat.key}
+                onPress={() => {
+                  handleCategoryChange(cat.key);
+                  setAccessoryExpanded(false);
+                }}
+                style={{ width: '33.33%', paddingHorizontal: 3, marginBottom: 6 }}
+                activeOpacity={0.7}
+              >
+                <View
+                  className={`flex-row items-center justify-center py-2.5 rounded-full ${
+                    isActive ? 'bg-primary' : 'bg-gray-100'
+                  }`}
+                >
+                  <MaterialIcons
+                    name={cat.icon as keyof typeof MaterialIcons.glyphMap}
+                    size={16}
+                    color={isActive ? '#fff' : Colors.textSecondary}
+                  />
+                  <Text
+                    className={`ml-1.5 text-xs font-semibold ${
+                      isActive ? 'text-white' : 'text-gray-600'
+                    }`}
+                    numberOfLines={1}
+                  >
+                    {cat.label}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
+
+          {/* Phụ kiện dropdown toggle */}
+          <TouchableOpacity
+            onPress={() => setAccessoryExpanded((prev) => !prev)}
+            style={{ width: '33.33%', paddingHorizontal: 3, marginBottom: 6 }}
+            activeOpacity={0.7}
+          >
+            <View
               className={`flex-row items-center justify-center py-2.5 rounded-full ${
-                isActive ? 'bg-primary' : 'bg-gray-100'
+                isAccessoryType(activeCategory) ? 'bg-primary' : 'bg-gray-100'
               }`}
             >
               <MaterialIcons
-                name={cat.icon as keyof typeof MaterialIcons.glyphMap}
+                name="widgets"
                 size={16}
-                color={isActive ? '#fff' : Colors.textSecondary}
+                color={isAccessoryType(activeCategory) ? '#fff' : Colors.textSecondary}
               />
               <Text
-                className={`ml-1 text-xs font-semibold ${
-                  isActive ? 'text-white' : 'text-gray-600'
+                className={`ml-1.5 text-xs font-semibold ${
+                  isAccessoryType(activeCategory) ? 'text-white' : 'text-gray-600'
                 }`}
+                numberOfLines={1}
               >
-                {cat.label}
+                Phụ kiện
               </Text>
-            </TouchableOpacity>
-          );
-        })}
+              <MaterialIcons
+                name={accessoryExpanded ? 'expand-less' : 'expand-more'}
+                size={16}
+                color={isAccessoryType(activeCategory) ? '#fff' : Colors.textSecondary}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        {/* Accessory sub-categories dropdown */}
+        {accessoryExpanded && (
+          <View className="flex-row mt-1 mb-1">
+            {accessorySubCategories.map((sub) => {
+              const isActive = activeCategory === sub.key;
+              return (
+                <TouchableOpacity
+                  key={sub.key}
+                  onPress={() => handleCategoryChange(sub.key)}
+                  style={{ flex: 1, paddingHorizontal: 3 }}
+                  activeOpacity={0.7}
+                >
+                  <View
+                    className={`flex-row items-center justify-center py-2 rounded-lg ${
+                      isActive ? 'bg-cyan-50 border border-primary' : 'bg-gray-50 border border-gray-200'
+                    }`}
+                  >
+                    <MaterialIcons
+                      name={sub.icon as keyof typeof MaterialIcons.glyphMap}
+                      size={14}
+                      color={isActive ? Colors.primary : Colors.textSecondary}
+                    />
+                    <Text
+                      className={`ml-1 text-xs font-medium ${
+                        isActive ? 'text-primary' : 'text-gray-500'
+                      }`}
+                      numberOfLines={1}
+                    >
+                      {sub.label}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        )}
       </View>
 
       {/* Brand Filter Chips */}
