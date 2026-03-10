@@ -23,9 +23,13 @@ import { ProductDetailScreen } from '@/screens/ProductDetailScreen';
 import { CartScreen } from '@/screens/CartScreen';
 import { FavoritesScreen } from '@/screens/FavoritesScreen';
 import { DashboardScreen } from '@/screens/DashboardScreen';
+import { ProductManagementScreen } from '@/screens/ProductManagementScreen';
+import { ProductFormScreen } from '@/screens/ProductFormScreen';
 import { OrderHistoryScreen } from '@/screens/OrderHistoryScreen';
 import { ProfileScreen } from '@/screens/ProfileScreen';
 import { EditProfileScreen } from '@/screens/EditProfileScreen';
+import { CheckoutScreen } from '@/screens/CheckoutScreen';
+import { AddressListScreen } from '@/screens/AddressListScreen';
 
 import { Colors } from '@/constants';
 import { useAuth } from '@/contexts/AuthContext';
@@ -84,6 +88,7 @@ const HomeStack = () => {
       <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
       <Stack.Screen name="Cart" component={CartScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} />
     </Stack.Navigator>
   );
 };
@@ -93,6 +98,7 @@ const ProductsStack = () => (
     <Stack.Screen name="ProductListMain" component={ProductListScreen} />
     <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
     <Stack.Screen name="Cart" component={CartScreen} />
+    <Stack.Screen name="Checkout" component={CheckoutScreen} />
   </Stack.Navigator>
 );
 
@@ -101,6 +107,7 @@ const FavoritesStack = () => (
     <Stack.Screen name="FavoritesMain" component={FavoritesScreen} />
     <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
     <Stack.Screen name="Cart" component={CartScreen} />
+    <Stack.Screen name="Checkout" component={CheckoutScreen} />
   </Stack.Navigator>
 );
 
@@ -108,12 +115,15 @@ const CartStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Cart" component={CartScreen} />
     <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+    <Stack.Screen name="Checkout" component={CheckoutScreen} />
   </Stack.Navigator>
 );
 
 const RevenueStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="RevenueMain" component={DashboardScreen} />
+    <Stack.Screen name="ProductManagement" component={ProductManagementScreen} />
+    <Stack.Screen name="ProductForm" component={ProductFormScreen} />
   </Stack.Navigator>
 );
 
@@ -128,6 +138,7 @@ const ProfileStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="ProfileMain" component={ProfileScreen} />
     <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+    <Stack.Screen name="AddressList" component={AddressListScreen} />
   </Stack.Navigator>
 );
 
@@ -330,6 +341,7 @@ const DrawerContent: React.FC<DrawerProps> = ({ visible, slideAnim, overlayAnim,
   const { cartCount } = useCart();
   const { favCount } = useFavorites();
   const rootNav = useNavigation<any>();
+  const insets = useSafeAreaInsets();
 
   const goTo = (tabName: string) => {
     onClose();
@@ -374,6 +386,7 @@ const DrawerContent: React.FC<DrawerProps> = ({ visible, slideAnim, overlayAnim,
           style={{
             width: DRAWER_WIDTH,
             backgroundColor: '#fff',
+            paddingTop: insets.top,
             transform: [{ translateX: slideAnim }],
             elevation: 20,
             shadowColor: '#000',
@@ -382,7 +395,7 @@ const DrawerContent: React.FC<DrawerProps> = ({ visible, slideAnim, overlayAnim,
             shadowOffset: { width: 5, height: 0 },
           }}
         >
-          <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+          <View style={{ flex: 1 }}>
             {/* Header */}
             <View className="px-5 pb-5 pt-3" style={{ backgroundColor: Colors.primary }}>
               <View className="flex-row items-center">
@@ -471,7 +484,7 @@ const DrawerContent: React.FC<DrawerProps> = ({ visible, slideAnim, overlayAnim,
               </TouchableOpacity>
               <Text className="text-center text-[10px] text-gray-300 mt-3">Aura Tech v1.0.0</Text>
             </View>
-          </SafeAreaView>
+          </View>
         </Animated.View>
 
         <Pressable style={{ flex: 1 }} onPress={onClose}>

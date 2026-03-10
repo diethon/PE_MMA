@@ -4,6 +4,7 @@ import {
   register as dbRegister,
   updateUserProfile as dbUpdateProfile,
   changePassword as dbChangePassword,
+  updateUserAddress as dbUpdateAddress,
   type UserRow,
   type UserRole,
 } from '../services/authDb';
@@ -18,6 +19,7 @@ interface AuthContextType {
   logout: () => void;
   updateProfile: (fullName: string, email: string) => Promise<UserRow>;
   changePassword: (oldPassword: string, newPassword: string) => Promise<void>;
+  updateAddress: (phone: string, address: string) => Promise<UserRow>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -63,6 +65,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     [user],
   );
 
+  const updateAddress = useCallback(
+    async (phone: string, address: string): Promise<UserRow> => {
+      if (!user) throw new Error('Not logged in');
+      const updated = await dbUpdateAddress(user.id, phone, address);
+      setUser(updated);
+      return updated;
+    },
+    [user],
+  );
+
   return (
     <AuthContext.Provider
       value={{
@@ -75,6 +87,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         logout,
         updateProfile,
         changePassword,
+        updateAddress,
       }}
     >
       {children}

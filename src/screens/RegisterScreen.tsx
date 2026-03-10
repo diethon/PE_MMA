@@ -186,10 +186,11 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
                 {/* Full Name */}
                 <View className="mb-4">
                   <Text className="text-xs text-gray-500 mb-1.5 ml-1">Họ và tên</Text>
-                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4">
                     <MaterialIcons name="person-outline" size={18} color="#9CA3AF" />
                     <TextInput
-                      className="flex-1 text-base text-gray-900 ml-2"
+                      className="flex-1 ml-2"
+                      style={{ fontSize: 15, color: '#111827', paddingVertical: 14 }}
                       placeholder="Nguyễn Văn A"
                       placeholderTextColor="#9CA3AF"
                       value={fullName}
@@ -201,10 +202,11 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
                 {/* Email */}
                 <View className="mb-4">
                   <Text className="text-xs text-gray-500 mb-1.5 ml-1">Email</Text>
-                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4">
                     <MaterialIcons name="email" size={18} color="#9CA3AF" />
                     <TextInput
-                      className="flex-1 text-base text-gray-900 ml-2"
+                      className="flex-1 ml-2"
+                      style={{ fontSize: 15, color: '#111827', paddingVertical: 14 }}
                       placeholder="email@example.com"
                       placeholderTextColor="#9CA3AF"
                       value={email}
@@ -218,10 +220,11 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
                 {/* Password */}
                 <View className="mb-6">
                   <Text className="text-xs text-gray-500 mb-1.5 ml-1">Mật khẩu</Text>
-                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4 py-3.5">
+                  <View className="flex-row items-center bg-gray-50 rounded-xl border border-gray-200 px-4">
                     <MaterialIcons name="lock" size={18} color="#9CA3AF" />
                     <TextInput
-                      className="flex-1 text-base text-gray-900 ml-2"
+                      className="flex-1 ml-2"
+                      style={{ fontSize: 15, color: '#111827', paddingVertical: 14 }}
                       placeholder="Tối thiểu 6 ký tự"
                       placeholderTextColor="#9CA3AF"
                       value={password}

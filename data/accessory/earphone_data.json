@@ -12,7 +12,8 @@
     "color": "Trắng",
     "installment": "Trả chậm 0%",
     "rating": "4.9",
-    "sold": "• Đã bán 50,2k"
+    "sold": "• Đã bán 50,2k",
+    "description": "AirPods 4 - tai nghe Apple màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "363187",
@@ -22,7 +23,8 @@
     "price": "4.990.000₫",
     "brand": "Samsung",
     "category": "Tai nghe",
-    "color": "Đen"
+    "color": "Đen",
+    "description": "Tai nghe Tai nghe TWS Samsung Galaxy Buds4 R540N từ Samsung. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "363188",
@@ -32,7 +34,8 @@
     "price": "6.790.000₫",
     "brand": "Samsung",
     "category": "Tai nghe",
-    "color": "Đen"
+    "color": "Đen",
+    "description": "Tai nghe TWS Samsung Galaxy Buds4 Pro R640N - tai nghe Samsung màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "361413",
@@ -44,7 +47,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 1,7k"
+    "sold": "• Đã bán 1,7k",
+    "description": "Tai nghe Tai nghe TWS Xiaomi Redmi Buds 8 Lite từ Xiaomi. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "342638",
@@ -56,7 +60,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 13,8k"
+    "sold": "• Đã bán 13,8k",
+    "description": "Tai nghe TWS OPPO ENCO Buds 3 ETEG1 - tai nghe OPPO màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "342707",
@@ -68,7 +73,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 13,8k"
+    "sold": "• Đã bán 13,8k",
+    "description": "Tai nghe Tai nghe TWS Samsung Galaxy Buds Core R410N từ Samsung. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "329158",
@@ -83,7 +89,8 @@
     "color": "Trắng",
     "installment": "Trả chậm 0%",
     "rating": "4.9",
-    "sold": "• Đã bán 23,7k"
+    "sold": "• Đã bán 23,7k",
+    "description": "AirPods 4 (chống ồn) - tai nghe Apple màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "359914",
@@ -97,7 +104,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 456"
+    "sold": "• Đã bán 456",
+    "description": "Tai nghe Tai nghe TWS Soundcore R60i NC D1202 từ soundcore. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "344776",
@@ -112,7 +120,8 @@
     "color": "Trắng",
     "installment": "Trả chậm 0%",
     "rating": "4.9",
-    "sold": "• Đã bán 6,8k"
+    "sold": "• Đã bán 6,8k",
+    "description": "AirPods Pro 3 - tai nghe Apple màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "315014",
@@ -127,7 +136,8 @@
     "color": "Trắng",
     "installment": "Trả chậm 0%",
     "rating": "4.9",
-    "sold": "• Đã bán 33,4k"
+    "sold": "• Đã bán 33,4k",
+    "description": "Tai nghe AirPods Pro Gen 2 (USB-C) từ Apple. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "344637",
@@ -141,7 +151,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 2,6k"
+    "sold": "• Đã bán 2,6k",
+    "description": "Tai nghe TWS Samsung Galaxy Buds3 FE R420N - tai nghe Samsung màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "359912",
@@ -157,7 +168,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 40"
+    "sold": "• Đã bán 40",
+    "description": "Tai nghe Tai nghe TWS Soundcore P41i A3937 từ soundcore. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "359913",
@@ -172,7 +184,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 5"
+    "sold": "• Đã bán 5",
+    "description": "Tai nghe Chụp Tai Soundcore Space One Pro A3062 - tai nghe soundcore màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "335184",
@@ -185,7 +198,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 31k"
+    "sold": "• Đã bán 31k",
+    "description": "Tai nghe Tai nghe TWS OPPO ENCO Buds 3 Pro ETEK1 từ OPPO. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "360083",
@@ -200,7 +214,8 @@
     "color": "Đen",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 133"
+    "sold": "• Đã bán 133",
+    "description": "Tai nghe Chụp Tai Ugreen Studio Max2 HP205 - tai nghe Ugreen màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360080",
@@ -215,7 +230,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 69"
+    "sold": "• Đã bán 69",
+    "description": "Tai nghe Tai nghe TWS Ugreen HiTune T3 Pro WS206 35725 từ Ugreen. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "312518",
@@ -230,7 +246,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 7,7k"
+    "sold": "• Đã bán 7,7k",
+    "description": "Tai nghe Chụp Tai JBL Tune 520BT - tai nghe JBL màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360353",
@@ -245,7 +262,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 212"
+    "sold": "• Đã bán 212",
+    "description": "Tai nghe Tai nghe TWS SoundPeats Q3 Pro từ Soundpeats. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "360084",
@@ -261,7 +279,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 211"
+    "sold": "• Đã bán 211",
+    "description": "Tai nghe Chụp Tai Ugreen HiTune Max5c HP203 - tai nghe Ugreen màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360079",
@@ -276,7 +295,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 215"
+    "sold": "• Đã bán 215",
+    "description": "Tai nghe Tai nghe TWS Ugreen HiTune P3 WS207 45110 từ Ugreen. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "360085",
@@ -291,7 +311,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 73"
+    "sold": "• Đã bán 73",
+    "description": "Tai nghe Open-Ear TWS Ugreen ClipBuds Magic WS208 55136 - tai nghe Ugreen màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "358554",
@@ -306,7 +327,8 @@
     "color": "Bạc",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 207"
+    "sold": "• Đã bán 207",
+    "description": "Tai nghe Tai nghe TWS OPPO Enco X3s ETED1 từ OPPO. Chất lượng âm thanh cao, thiết kế gọn, màu Bạc."
   },
   {
     "id": "360081",
@@ -321,7 +343,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 44"
+    "sold": "• Đã bán 44",
+    "description": "Tai nghe TWS Ugreen EchoBuds Magic WS211 55137 - tai nghe Ugreen màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "344791",
@@ -335,7 +358,8 @@
     "category": "Tai nghe",
     "color": "Màu be",
     "rating": "5",
-    "sold": "• Đã bán 2,2k"
+    "sold": "• Đã bán 2,2k",
+    "description": "Tai nghe Tai nghe TWS Rezo Wave từ Rezo. Chất lượng âm thanh cao, thiết kế gọn, màu Màu be."
   },
   {
     "id": "344793",
@@ -349,7 +373,8 @@
     "category": "Tai nghe",
     "color": "Màu be",
     "rating": "4.9",
-    "sold": "• Đã bán 1,1k"
+    "sold": "• Đã bán 1,1k",
+    "description": "Tai nghe TWS Rezo Wave Pro ANC - tai nghe Rezo màu Màu be. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "313694",
@@ -364,7 +389,8 @@
     "color": "Xanh Dương",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 6,2k"
+    "sold": "• Đã bán 6,2k",
+    "description": "Tai nghe Tai nghe Chụp Tai Sony WH-CH520 từ Sony. Chất lượng âm thanh cao, thiết kế gọn, màu Xanh Dương."
   },
   {
     "id": "359059",
@@ -376,7 +402,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 50"
+    "sold": "• Đã bán 50",
+    "description": "Tai nghe JBL Endurance Pace - tai nghe JBL màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "359043",
@@ -388,7 +415,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 13"
+    "sold": "• Đã bán 13",
+    "description": "Tai nghe Tai nghe Open-Ear OWS JBL Soundgear CLIPS từ JBL. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "359062",
@@ -400,7 +428,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 3"
+    "sold": "• Đã bán 3",
+    "description": "Tai nghe Open-Ear OWS JBL Endurance Zone - tai nghe JBL màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "361522",
@@ -413,7 +442,8 @@
     "brand": "HAVIT",
     "category": "Tai nghe",
     "color": "Đen",
-    "online_tag": "Online giá rẻ quá"
+    "online_tag": "Online giá rẻ quá",
+    "description": "Tai nghe Tai nghe truyền xương Havit Hakii Survin từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "332455",
@@ -427,7 +457,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 9,2k"
+    "sold": "• Đã bán 9,2k",
+    "description": "Tai nghe TWS JBL Wave Beam 2 - tai nghe JBL màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "359578",
@@ -442,7 +473,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 17"
+    "sold": "• Đã bán 17",
+    "description": "Tai nghe Tai nghe TWS Soundpeats Air5 Pro+ từ Soundpeats. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "359338",
@@ -455,7 +487,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 137"
+    "sold": "• Đã bán 137",
+    "description": "Tai nghe Chụp Tai Alpha Works Flex 688 - tai nghe Alpha Works màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360352",
@@ -471,7 +504,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 36"
+    "sold": "• Đã bán 36",
+    "description": "Tai nghe Tai nghe TWS SoundPeats C30 từ Soundpeats. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "359911",
@@ -485,7 +519,8 @@
     "color": "Xanh Dương",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 24"
+    "sold": "• Đã bán 24",
+    "description": "Tai nghe Open-Ear OWS Soundcore AeroFit 2 A3874 - tai nghe soundcore màu Xanh Dương. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "359577",
@@ -500,7 +535,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 16"
+    "sold": "• Đã bán 16",
+    "description": "Tai nghe Tai nghe Open-Ear OWS SoundPeats Clip 1 từ Soundpeats. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "337180",
@@ -517,7 +553,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 20"
+    "sold": "• Đã bán 20",
+    "description": "Tai nghe Chụp Tai Gaming Asus ROG PELTA - tai nghe Asus màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "344790",
@@ -531,7 +568,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 7,5k"
+    "sold": "• Đã bán 7,5k",
+    "description": "Tai nghe Tai nghe TWS AVA+ FreeGo Y60 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "358220",
@@ -546,7 +584,8 @@
     "color": "Xám",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 434"
+    "sold": "• Đã bán 434",
+    "description": "Tai nghe Chụp Tai Baseus Bass BH1 - tai nghe Baseus màu Xám. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "359339",
@@ -562,7 +601,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 226"
+    "sold": "• Đã bán 226",
+    "description": "Tai nghe Tai nghe Chụp Tai Alpha Works Lite 660 từ Alpha Works. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "325339",
@@ -579,7 +619,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 1,2k"
+    "sold": "• Đã bán 1,2k",
+    "description": "Tai nghe TWS Marshall Minor IV - tai nghe Marshall màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "358221",
@@ -594,7 +635,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 129"
+    "sold": "• Đã bán 129",
+    "description": "Tai nghe Tai nghe Chụp Tai Baseus Bass BH1 NC từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "349971",
@@ -610,7 +652,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 72"
+    "sold": "• Đã bán 72",
+    "description": "Tai nghe TWS Xiaomi OpenWear Stereo Pro - tai nghe Xiaomi màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "358222",
@@ -625,7 +668,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 70"
+    "sold": "• Đã bán 70",
+    "description": "Tai nghe Tai nghe Open-Ear TWS Baseus Eli Sport 2 từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "357871",
@@ -640,7 +684,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 20"
+    "sold": "• Đã bán 20",
+    "description": "Tai nghe Chụp Tai Gaming Razer Barracuda X Chroma - tai nghe Razer màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "341111",
@@ -655,7 +700,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 4,8k"
+    "sold": "• Đã bán 4,8k",
+    "description": "Tai nghe Tai nghe Bluetooth TWS Baseus Bass BP1 Pro PM132 từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "359044",
@@ -667,7 +713,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 10"
+    "sold": "• Đã bán 10",
+    "description": "Tai nghe Open-Ear OWS JBL Sense Pro - tai nghe JBL màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "358393",
@@ -679,7 +726,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 619"
+    "sold": "• Đã bán 619",
+    "description": "Tai nghe Tai nghe Chụp Tai Havit H612BT Pro từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "340058",
@@ -693,7 +741,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 4k"
+    "sold": "• Đã bán 4k",
+    "description": "Tai nghe Bluetooth chụp tai Alpha Works AW LITE 600 - tai nghe Alpha Works màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "357868",
@@ -707,7 +756,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 193"
+    "sold": "• Đã bán 193",
+    "description": "Tai nghe Tai nghe TWS Huawei T0014 FreeBuds 5i từ Huawei. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "332588",
@@ -723,7 +773,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 163"
+    "sold": "• Đã bán 163",
+    "description": "Tai nghe truyền xương Shokz OPENRUN PRO 2 S820 - tai nghe Shokz màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "327988",
@@ -738,7 +789,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 83,4k"
+    "sold": "• Đã bán 83,4k",
+    "description": "Tai nghe Tai nghe TWS AVA+ Buds Life Air 2 Pro từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "358391",
@@ -750,7 +802,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 230"
+    "sold": "• Đã bán 230",
+    "description": "Tai nghe TWS Havit LIFE NC01T TW984 - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "359198",
@@ -764,7 +817,8 @@
     "category": "Tai nghe",
     "color": "Trắng",
     "rating": "5",
-    "sold": "• Đã bán 7"
+    "sold": "• Đã bán 7",
+    "description": "Tai nghe Tai nghe Chụp Tai Baseus Inspire XH1 từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "329299",
@@ -780,7 +834,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 16,4k"
+    "sold": "• Đã bán 16,4k",
+    "description": "Tai nghe TWS Rezo K50 - tai nghe Rezo màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "358392",
@@ -792,7 +847,8 @@
     "category": "Tai nghe",
     "color": "Xám",
     "rating": "4.9",
-    "sold": "• Đã bán 90"
+    "sold": "• Đã bán 90",
+    "description": "Tai nghe Tai nghe TWS Havit TW991 Pro từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Xám."
   },
   {
     "id": "359197",
@@ -807,7 +863,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 779"
+    "sold": "• Đã bán 779",
+    "description": "Tai nghe TWS Baseus Bass EP10 NC - tai nghe Baseus màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "339344",
@@ -822,7 +879,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 4,2k"
+    "sold": "• Đã bán 4,2k",
+    "description": "Tai nghe Tai nghe TWS Havit TW943 Pro từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "357563",
@@ -836,7 +894,8 @@
     "category": "Tai nghe",
     "color": "Trắng",
     "rating": "5",
-    "sold": "• Đã bán 465"
+    "sold": "• Đã bán 465",
+    "description": "Tai nghe TWS Realme Buds T200 - tai nghe realme màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "357465",
@@ -849,7 +908,8 @@
     "color": "Bạc",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 79"
+    "sold": "• Đã bán 79",
+    "description": "Tai nghe Tai nghe Chụp Tai Havit Space S1 từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Bạc."
   },
   {
     "id": "357867",
@@ -865,7 +925,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 29"
+    "sold": "• Đã bán 29",
+    "description": "Tai nghe TWS Huawei T0013 FreeBuds 5 - tai nghe Huawei màu Bạc. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "357463",
@@ -877,7 +938,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 318"
+    "sold": "• Đã bán 318",
+    "description": "Tai nghe Tai nghe TWS Havit TW992 từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "311187",
@@ -893,7 +955,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 21,4k"
+    "sold": "• Đã bán 21,4k",
+    "description": "Tai nghe Chụp Tai Havit H661BT - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "330247",
@@ -907,7 +970,8 @@
     "category": "Tai nghe",
     "color": "Trắng",
     "rating": "4.9",
-    "sold": "• Đã bán 185,3k"
+    "sold": "• Đã bán 185,3k",
+    "description": "Tai nghe Tai nghe TWS AVA+ FreeGo W28 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "357462",
@@ -919,7 +983,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 1k"
+    "sold": "• Đã bán 1k",
+    "description": "Tai nghe TWS Havit LIFE 04T - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "333561",
@@ -935,7 +1000,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 7,3k"
+    "sold": "• Đã bán 7,3k",
+    "description": "Tai nghe Tai nghe TWS Xiaomi Redmi Buds 6 từ Xiaomi. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "327554",
@@ -952,7 +1018,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 4,6k"
+    "sold": "• Đã bán 4,6k",
+    "description": "Tai nghe TWS Samsung Galaxy Buds3 Pro R630N - tai nghe Samsung màu Xám. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "344789",
@@ -966,7 +1033,8 @@
     "category": "Tai nghe",
     "color": "Màu be",
     "rating": "4.9",
-    "sold": "• Đã bán 13,8k"
+    "sold": "• Đã bán 13,8k",
+    "description": "Tai nghe Tai nghe TWS AVA+ FreeGo W30 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Màu be."
   },
   {
     "id": "357467",
@@ -981,7 +1049,8 @@
     "color": "Đen",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 368"
+    "sold": "• Đã bán 368",
+    "description": "Tai nghe Open-Ear TWS Havit OWFIT 02A - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "356806",
@@ -997,7 +1066,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 187"
+    "sold": "• Đã bán 187",
+    "description": "Tai nghe Tai nghe TWS Huawei T0019 FreeBuds 6i từ Huawei. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "330710",
@@ -1011,7 +1081,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 199,6k"
+    "sold": "• Đã bán 199,6k",
+    "description": "Tai nghe TWS AVA+ FreeGo PT52 - tai nghe AVA+ màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "329993",
@@ -1027,7 +1098,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 148,3k"
+    "sold": "• Đã bán 148,3k",
+    "description": "Tai nghe Tai nghe TWS Xiaomi Redmi Buds 6 Play từ Xiaomi. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "328698",
@@ -1043,7 +1115,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 93,3k"
+    "sold": "• Đã bán 93,3k",
+    "description": "Tai nghe TWS Xiaomi Redmi Buds 6 Active - tai nghe Xiaomi màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "324709",
@@ -1058,7 +1131,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 45,6k"
+    "sold": "• Đã bán 45,6k",
+    "description": "Tai nghe Tai nghe TWS Baseus Bowie E20 từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "325122",
@@ -1073,7 +1147,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 46,5k"
+    "sold": "• Đã bán 46,5k",
+    "description": "Tai nghe TWS AVA+ Buds Life Air 3 - tai nghe AVA+ màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "341753",
@@ -1088,7 +1163,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 2,2k"
+    "sold": "• Đã bán 2,2k",
+    "description": "Tai nghe Tai nghe Bluetooth chụp tai Baseus Bass BH1 Lite từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "330709",
@@ -1104,7 +1180,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 55,1k"
+    "sold": "• Đã bán 55,1k",
+    "description": "Tai nghe TWS AVA+ Go P310 - tai nghe AVA+ màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "330833",
@@ -1118,7 +1195,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 5,5k"
+    "sold": "• Đã bán 5,5k",
+    "description": "Tai nghe Tai nghe TWS soundcore R50i NC A3959 từ soundcore. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "311186",
@@ -1134,7 +1212,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 28,9k"
+    "sold": "• Đã bán 28,9k",
+    "description": "Tai nghe Chụp Tai Havit H662BT - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "330478",
@@ -1150,7 +1229,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 12,8k"
+    "sold": "• Đã bán 12,8k",
+    "description": "Tai nghe Tai nghe Open-Ear TWS AVA+ FreeGo OWS04 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Màu be."
   },
   {
     "id": "322214",
@@ -1165,7 +1245,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 182k"
+    "sold": "• Đã bán 182k",
+    "description": "Tai nghe TWS AVA+ Go F25 - tai nghe AVA+ màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360651",
@@ -1179,7 +1260,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "4.9",
-    "sold": "• Đã bán 174"
+    "sold": "• Đã bán 174",
+    "description": "Tai nghe Tai nghe TWS AVA+ FreeGo Y70 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "338616",
@@ -1194,7 +1276,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 2,7k"
+    "sold": "• Đã bán 2,7k",
+    "description": "Tai nghe TWS Huawei T0016 FreeBuds SE 2 - tai nghe Huawei màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "328697",
@@ -1210,7 +1293,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 55,5k"
+    "sold": "• Đã bán 55,5k",
+    "description": "Tai nghe Tai nghe TWS Xiaomi Redmi Buds 6 Lite từ Xiaomi. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "339345",
@@ -1225,7 +1309,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 3,7k"
+    "sold": "• Đã bán 3,7k",
+    "description": "Tai nghe TWS Havit TW996 Pro - tai nghe HAVIT màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360641",
@@ -1240,7 +1325,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "5",
-    "sold": "• Đã bán 392"
+    "sold": "• Đã bán 392",
+    "description": "Tai nghe Tai nghe TWS realme TechLife Buds từ realme. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "339343",
@@ -1256,7 +1342,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 3,6k"
+    "sold": "• Đã bán 3,6k",
+    "description": "Tai nghe TWS Havit TW923 Pro - tai nghe HAVIT màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "324786",
@@ -1271,7 +1358,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 45,8k"
+    "sold": "• Đã bán 45,8k",
+    "description": "Tai nghe Tai nghe TWS Havit TW976 từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "330557",
@@ -1285,7 +1373,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 2,9k"
+    "sold": "• Đã bán 2,9k",
+    "description": "Tai nghe TWS soundcore K20i - tai nghe soundcore màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "287888",
@@ -1301,7 +1390,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 172,9k"
+    "sold": "• Đã bán 172,9k",
+    "description": "Tai nghe Tai nghe TWS OPPO ENCO Buds 2 ETE41 từ OPPO. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "330488",
@@ -1314,7 +1404,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 3,6k"
+    "sold": "• Đã bán 3,6k",
+    "description": "Tai nghe TWS Havit TW982 Life 01T - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "330248",
@@ -1329,7 +1420,8 @@
     "color": "Hồng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 17,5k"
+    "sold": "• Đã bán 17,5k",
+    "description": "Tai nghe Tai nghe TWS AVA+ FreeGo Y50 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Hồng."
   },
   {
     "id": "333912",
@@ -1345,7 +1437,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 7,2k"
+    "sold": "• Đã bán 7,2k",
+    "description": "Tai nghe Open-Ear TWS AVA+ FreeGo OWS800 - tai nghe AVA+ màu Màu be. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "316448",
@@ -1360,7 +1453,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 34,2k"
+    "sold": "• Đã bán 34,2k",
+    "description": "Tai nghe Tai nghe TWS Samsung Galaxy Buds FE R400N từ Samsung. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "320250",
@@ -1376,7 +1470,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 14,3k"
+    "sold": "• Đã bán 14,3k",
+    "description": "Tai nghe Chụp Tai Havit H667BT - tai nghe HAVIT màu Xanh Dương. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "327950",
@@ -1391,7 +1486,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 3k"
+    "sold": "• Đã bán 3k",
+    "description": "Tai nghe Tai nghe Sony WI-C100 từ Sony. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "336370",
@@ -1404,7 +1500,8 @@
     "color": "Xám",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 9,9k"
+    "sold": "• Đã bán 9,9k",
+    "description": "Tai nghe TWS realme Buds T200 Lite - tai nghe realme màu Xám. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "331544",
@@ -1418,7 +1515,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 3,9k"
+    "sold": "• Đã bán 3,9k",
+    "description": "Tai nghe Tai nghe TWS OPPO ENCO Air 4 ETEE1 từ OPPO. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "327553",
@@ -1435,7 +1533,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 3,6k"
+    "sold": "• Đã bán 3,6k",
+    "description": "Tai nghe TWS Samsung Galaxy Buds3 R530N - tai nghe Samsung màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "313697",
@@ -1451,7 +1550,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 1,9k"
+    "sold": "• Đã bán 1,9k",
+    "description": "Tai nghe Tai nghe Chụp Tai Sony WH-CH720N từ Sony. Chất lượng âm thanh cao, thiết kế gọn, màu Hồng."
   },
   {
     "id": "342854",
@@ -1466,7 +1566,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 883"
+    "sold": "• Đã bán 883",
+    "description": "Tai nghe TWS Sony WF-C510 - tai nghe Sony màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "315176",
@@ -1482,7 +1583,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 9,1k"
+    "sold": "• Đã bán 9,1k",
+    "description": "Tai nghe Tai nghe TWS SOUL S-LIVE 30 từ Soul. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "316691",
@@ -1497,7 +1599,8 @@
     "color": "Đen",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 3,4k"
+    "sold": "• Đã bán 3,4k",
+    "description": "Tai nghe Chụp Tai Zadez GP-803B - tai nghe Zadez màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "357464",
@@ -1509,7 +1612,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 148"
+    "sold": "• Đã bán 148",
+    "description": "Tai nghe Tai nghe Chụp Tai Havit H603BT từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "362478",
@@ -1522,7 +1626,8 @@
     "category": "Tai nghe",
     "color": "Màu be",
     "rating": "5",
-    "sold": "• Đã bán 13"
+    "sold": "• Đã bán 13",
+    "description": "Tai nghe Open-Ear OWS Rezo PulseGo - tai nghe Rezo màu Màu be. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "333458",
@@ -1538,7 +1643,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 3,9k"
+    "sold": "• Đã bán 3,9k",
+    "description": "Tai nghe Tai nghe TWS Alpha Works AW-Curve 200 từ Alpha Works. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "324711",
@@ -1553,7 +1659,8 @@
     "color": "Xám đậm",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 9,7k"
+    "sold": "• Đã bán 9,7k",
+    "description": "Tai nghe Chụp Tai Baseus Bass 35 Max - tai nghe Baseus màu Xám đậm. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "325305",
@@ -1569,7 +1676,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 28,9k"
+    "sold": "• Đã bán 28,9k",
+    "description": "Tai nghe Tai nghe TWS AVA+ FreeGo Y913 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "320249",
@@ -1585,7 +1693,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 7,8k"
+    "sold": "• Đã bán 7,8k",
+    "description": "Tai nghe Chụp Tai Havit H663BT - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "338171",
@@ -1601,7 +1710,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 504"
+    "sold": "• Đã bán 504",
+    "description": "Tai nghe Tai nghe TWS Sony WF-C710N từ Sony. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "327688",
@@ -1615,7 +1725,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 5,4k"
+    "sold": "• Đã bán 5,4k",
+    "description": "Tai nghe TWS OPPO ENCO Air 4 Pro ETEA1 - tai nghe OPPO màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "330249",
@@ -1631,7 +1742,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 9,3k"
+    "sold": "• Đã bán 9,3k",
+    "description": "Tai nghe Tai nghe TWS Rezo RZ09 ANC từ Rezo. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "310400",
@@ -1647,7 +1759,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 5,8k"
+    "sold": "• Đã bán 5,8k",
+    "description": "Tai nghe TWS Havit TW947 - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "331747",
@@ -1663,7 +1776,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 2,7k"
+    "sold": "• Đã bán 2,7k",
+    "description": "Tai nghe Tai nghe Chụp Tai Alpha Works Flex 680 từ Alpha Works. Chất lượng âm thanh cao, thiết kế gọn, màu Xanh Dương."
   },
   {
     "id": "332456",
@@ -1679,7 +1793,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 1,9k"
+    "sold": "• Đã bán 1,9k",
+    "description": "Tai nghe TWS JBL Tune Beam 2 - tai nghe JBL màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "362479",
@@ -1692,7 +1807,8 @@
     "category": "Tai nghe",
     "color": "Xám",
     "rating": "5",
-    "sold": "• Đã bán 8"
+    "sold": "• Đã bán 8",
+    "description": "Tai nghe Tai nghe Open-Ear OWS Rezo MuseGo 2 từ Rezo. Chất lượng âm thanh cao, thiết kế gọn, màu Xám."
   },
   {
     "id": "334001",
@@ -1707,7 +1823,8 @@
     "color": "Tím",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 9,9k"
+    "sold": "• Đã bán 9,9k",
+    "description": "Tai nghe TWS Havit TW941 - tai nghe HAVIT màu Tím. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "310172",
@@ -1723,7 +1840,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 255,4k"
+    "sold": "• Đã bán 255,4k",
+    "description": "Tai nghe Tai nghe TWS AVA+ FreeGo W26 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "325754",
@@ -1738,7 +1856,8 @@
     "color": "Xám",
     "installment": "Trả chậm 0%",
     "rating": "4.9",
-    "sold": "• Đã bán 404"
+    "sold": "• Đã bán 404",
+    "description": "Tai nghe Bluetooth True Wireless Beats Solo Buds - tai nghe Beats màu Xám. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "336286",
@@ -1753,7 +1872,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 2,7k"
+    "sold": "• Đã bán 2,7k",
+    "description": "Tai nghe Tai nghe TWS Alpha Works AW Curve 100 từ Alpha Works. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "310364",
@@ -1768,7 +1888,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 3,3k"
+    "sold": "• Đã bán 3,3k",
+    "description": "Tai nghe TWS Soundpeats Free 2 Classic - tai nghe Soundpeats màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "329161",
@@ -1783,7 +1904,8 @@
     "color": "Vàng nhạt",
     "installment": "Trả chậm 0%",
     "rating": "5",
-    "sold": "• Đã bán 1k"
+    "sold": "• Đã bán 1k",
+    "description": "Tai nghe AirPods Max cổng USB C từ Apple. Chất lượng âm thanh cao, thiết kế gọn, màu Vàng nhạt."
   },
   {
     "id": "330491",
@@ -1798,7 +1920,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 1,8k"
+    "sold": "• Đã bán 1,8k",
+    "description": "Tai nghe TWS Havit TW967 Pro - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "329287",
@@ -1814,7 +1937,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 468"
+    "sold": "• Đã bán 468",
+    "description": "Tai nghe Tai nghe Thể thao Soundpeats RunFree Lite 2 từ Soundpeats. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "333562",
@@ -1831,7 +1955,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 1,4k"
+    "sold": "• Đã bán 1,4k",
+    "description": "Tai nghe TWS Xiaomi Redmi Buds 6 Pro - tai nghe Xiaomi màu Tím. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "332587",
@@ -1847,7 +1972,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 402"
+    "sold": "• Đã bán 402",
+    "description": "Tai nghe Tai nghe Chụp Tai soundcore Space One A3035 từ soundcore. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "331211",
@@ -1863,7 +1989,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 9k"
+    "sold": "• Đã bán 9k",
+    "description": "Tai nghe TWS AVA+ Buds Life Rider GT09 - tai nghe AVA+ màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "328322",
@@ -1880,7 +2007,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 667"
+    "sold": "• Đã bán 667",
+    "description": "Tai nghe Tai nghe TWS JBL Live Beam 3 từ JBL. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "333835",
@@ -1896,7 +2024,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 9,3k"
+    "sold": "• Đã bán 9,3k",
+    "description": "Tai nghe TWS Havit TW986 - tai nghe HAVIT màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "330246",
@@ -1912,7 +2041,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 9,2k"
+    "sold": "• Đã bán 9,2k",
+    "description": "Tai nghe Tai nghe Open-Ear TWS AVA+ FreeGo OWS02 từ AVA+. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "332586",
@@ -1928,7 +2058,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 206"
+    "sold": "• Đã bán 206",
+    "description": "Tai nghe TWS soundcore Liberty 4 Pro A3954 - tai nghe soundcore màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "310398",
@@ -1943,7 +2074,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 1,3k"
+    "sold": "• Đã bán 1,3k",
+    "description": "Tai nghe Tai nghe TWS Soundpeats Capsule 3 Pro từ Soundpeats. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "337462",
@@ -1959,7 +2091,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 1,3k"
+    "sold": "• Đã bán 1,3k",
+    "description": "Tai nghe TWS Baseus Bass BD1 - tai nghe Baseus màu Tím. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "330711",
@@ -1975,7 +2108,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 4k"
+    "sold": "• Đã bán 4k",
+    "description": "Tai nghe Tai nghe TWS Rezo Air 5 Deluxe ANC từ Rezo. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "337644",
@@ -1990,7 +2124,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 284"
+    "sold": "• Đã bán 284",
+    "description": "Tai nghe Open-Ear OWS Baseus Bowie MC1 - tai nghe Baseus màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "326708",
@@ -2007,7 +2142,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 711"
+    "sold": "• Đã bán 711",
+    "description": "Tai nghe Tai nghe chụp tai Marshall Major V từ Marshall. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "339757",
@@ -2023,7 +2159,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 140"
+    "sold": "• Đã bán 140",
+    "description": "Tai nghe Bluetooth Chụp tai Sony WH1000XM6 - tai nghe Sony màu Xám. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "313692",
@@ -2039,7 +2176,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 543"
+    "sold": "• Đã bán 543",
+    "description": "Tai nghe Tai nghe Chụp Tai Sony WH1000XM5 từ Sony. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "325340",
@@ -2056,7 +2194,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 551"
+    "sold": "• Đã bán 551",
+    "description": "Tai nghe TWS Marshall Motif II A.N.C. - tai nghe Marshall màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "361257",
@@ -2072,7 +2211,8 @@
     "label": "MỞ BÁN GIẢM SÂU",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 4"
+    "sold": "• Đã bán 4",
+    "description": "Tai nghe Tai nghe TWS Aukey EP-M3A - Xanh Lá từ AUKEY. Chất lượng âm thanh cao, thiết kế gọn, màu Xanh lá."
   },
   {
     "id": "363186",
@@ -2084,7 +2224,8 @@
     "discount": "-12%",
     "brand": "Xiaomi",
     "category": "Tai nghe",
-    "color": "Đen"
+    "color": "Đen",
+    "description": "Tai nghe TWS Xiaomi Redmi Buds 8 Pro - tai nghe Xiaomi màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "313700",
@@ -2100,7 +2241,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 355"
+    "sold": "• Đã bán 355",
+    "description": "Tai nghe Tai nghe TWS Sony WF1000XM5 từ Sony. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "357466",
@@ -2112,7 +2254,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 57"
+    "sold": "• Đã bán 57",
+    "description": "Tai nghe Open-Ear TWS Havit OWS929 - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "361259",
@@ -2128,7 +2271,8 @@
     "label": "MỞ BÁN GIẢM SÂU",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 4"
+    "sold": "• Đã bán 4",
+    "description": "Tai nghe Tai nghe TWS Aukey EP-M3A - Xanh Dương từ AUKEY. Chất lượng âm thanh cao, thiết kế gọn, màu Xanh Dương."
   },
   {
     "id": "328846",
@@ -2144,7 +2288,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 386"
+    "sold": "• Đã bán 386",
+    "description": "Tai nghe TWS Soundpeats Clear-Pods - tai nghe Soundpeats màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "322728",
@@ -2160,7 +2305,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 238"
+    "sold": "• Đã bán 238",
+    "description": "Tai nghe Tai nghe truyền xương Shokz OPENRUN S803 từ Shokz. Chất lượng âm thanh cao, thiết kế gọn, màu Xanh Dương."
   },
   {
     "id": "327984",
@@ -2176,7 +2322,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 522"
+    "sold": "• Đã bán 522",
+    "description": "Tai nghe Havit Hakii Light - tai nghe HAVIT màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "339536",
@@ -2192,7 +2339,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 173"
+    "sold": "• Đã bán 173",
+    "description": "Tai nghe Tai nghe TWS soundcore Liberty 5 A3957 từ soundcore. Chất lượng âm thanh cao, thiết kế gọn, màu Xanh Dương."
   },
   {
     "id": "344521",
@@ -2205,7 +2353,8 @@
     "color": "Đen",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 198"
+    "sold": "• Đã bán 198",
+    "description": "Tai nghe Open-Ear TWS JBL Sense Lite - tai nghe JBL màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "326587",
@@ -2221,7 +2370,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 665"
+    "sold": "• Đã bán 665",
+    "description": "Tai nghe Tai nghe Open-Ear TWS Baseus Eli Sport 1 từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "337178",
@@ -2237,7 +2387,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 64"
+    "sold": "• Đã bán 64",
+    "description": "Tai nghe Chụp Tai Logitech Zone 300 - tai nghe Logitech màu Trắng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "341106",
@@ -2253,7 +2404,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 31"
+    "sold": "• Đã bán 31",
+    "description": "Tai nghe Tai nghe TWS Shokz E310 OPENDOTS ONE từ Shokz. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "361258",
@@ -2268,7 +2420,8 @@
     "color": "Tím",
     "label": "MỞ BÁN GIẢM SÂU",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 2"
+    "sold": "• Đã bán 2",
+    "description": "Tai nghe TWS Aukey EP-M3A - Tím - tai nghe AUKEY màu Tím. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "324742",
@@ -2283,7 +2436,8 @@
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 4k"
+    "sold": "• Đã bán 4k",
+    "description": "Tai nghe Tai nghe TWS OPPO Enco Buds 2 Pro E510A từ OPPO. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "332589",
@@ -2299,7 +2453,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 106"
+    "sold": "• Đã bán 106",
+    "description": "Tai nghe truyền xương Shokz OPENRUN PRO 2 Mini S821 - tai nghe Shokz màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360028",
@@ -2314,7 +2469,8 @@
     "color": "Đen",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 1"
+    "sold": "• Đã bán 1",
+    "description": "Tai nghe Tai nghe TWS Earfun Air Pro 4i - Đen từ Earfun. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "360034",
@@ -2329,7 +2485,8 @@
     "color": "Đen",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 2"
+    "sold": "• Đã bán 2",
+    "description": "Tai nghe chụp tai Earfun WavePro - tai nghe Earfun màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "361260",
@@ -2344,7 +2501,8 @@
     "color": "Trắng",
     "label": "MỞ BÁN GIẢM SÂU",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 1"
+    "sold": "• Đã bán 1",
+    "description": "Tai nghe Tai nghe TWS Aukey EP-M3A - Trắng từ AUKEY. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "322729",
@@ -2360,7 +2518,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 89"
+    "sold": "• Đã bán 89",
+    "description": "Tai nghe truyền xương Shokz OPENRUN PRO S810 - tai nghe Shokz màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "324581",
@@ -2377,7 +2536,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 180"
+    "sold": "• Đã bán 180",
+    "description": "Tai nghe Tai nghe Chụp Tai JBL Live 670NC từ JBL. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "327985",
@@ -2393,7 +2553,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 525"
+    "sold": "• Đã bán 525",
+    "description": "Tai nghe Soul Open-Ear Plus - tai nghe Soul màu Xanh Dương. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "328281",
@@ -2409,7 +2570,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 98"
+    "sold": "• Đã bán 98",
+    "description": "Tai nghe Tai nghe TWS Shokz OPENFIT AIR T511 từ Shokz. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "328282",
@@ -2425,7 +2587,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 109"
+    "sold": "• Đã bán 109",
+    "description": "Tai nghe truyền xương Shokz OPENSWIM PRO S710 - tai nghe Shokz màu Xám. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "338377",
@@ -2441,7 +2604,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0%",
     "rating": "5",
-    "sold": "• Đã bán 75"
+    "sold": "• Đã bán 75",
+    "description": "Tai nghe Tai nghe TWS Beats Powerbeats Pro 2 từ Beats. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "341522",
@@ -2455,7 +2619,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.9",
-    "sold": "• Đã bán 38"
+    "sold": "• Đã bán 38",
+    "description": "Tai nghe TWS Sennheiser Accentum Open OTW1 - tai nghe Sennheiser màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "324708",
@@ -2470,7 +2635,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 752"
+    "sold": "• Đã bán 752",
+    "description": "Tai nghe Tai nghe TWS Baseus AirGo 1 Ring Open-Ear từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "327514",
@@ -2485,7 +2651,8 @@
     "color": "Màu be",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 380"
+    "sold": "• Đã bán 380",
+    "description": "Tai nghe TWS Havit TW980 - tai nghe HAVIT màu Màu be. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "328746",
@@ -2500,7 +2667,8 @@
     "color": "Trắng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 419"
+    "sold": "• Đã bán 419",
+    "description": "Tai nghe Tai nghe TWS Sounarc Q1 Earbuds từ SOUNARC. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "318892",
@@ -2515,7 +2683,8 @@
     "color": "Vàng đồng",
     "label": "QUÀ ĐẸP MÃ",
     "rating": "4.9",
-    "sold": "• Đã bán 276"
+    "sold": "• Đã bán 276",
+    "description": "Tai nghe TWS Monster MH22163 N-Lite 203 AirLinks - tai nghe MONSTER màu Vàng đồng. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "333457",
@@ -2531,7 +2700,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 161"
+    "sold": "• Đã bán 161",
+    "description": "Tai nghe Tai nghe Chụp Tai Baseus Bowie 30 Max từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "341105",
@@ -2547,7 +2717,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 49"
+    "sold": "• Đã bán 49",
+    "description": "Tai nghe TWS Shokz T921 OPENFIT 2+ - tai nghe Shokz màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "341524",
@@ -2563,7 +2734,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 42"
+    "sold": "• Đã bán 42",
+    "description": "Tai nghe Tai nghe Chụp Tai Sennheiser Momentum 4 M4AEBT từ Sennheiser. Chất lượng âm thanh cao, thiết kế gọn, màu Ghi đen."
   },
   {
     "id": "341526",
@@ -2579,7 +2751,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 10"
+    "sold": "• Đã bán 10",
+    "description": "Tai nghe TWS Sennheiser Momentum 4 MTW4 - tai nghe Sennheiser màu Ghi đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "341798",
@@ -2595,7 +2768,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 25"
+    "sold": "• Đã bán 25",
+    "description": "Tai nghe Tai nghe Chụp Tai Logitech Zone 300 từ Logitech. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "359218",
@@ -2609,7 +2783,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "rating": "5",
-    "sold": "• Đã bán 18"
+    "sold": "• Đã bán 18",
+    "description": "Tai nghe Chụp Tai Gaming Logitech G321 - tai nghe Logitech màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360045",
@@ -2625,7 +2800,8 @@
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 5"
+    "sold": "• Đã bán 5",
+    "description": "Tai nghe Tai nghe Chụp Tai OneOdio A70 - Đen từ ONEODIO. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "360048",
@@ -2639,7 +2815,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
-    "online_tag": "Online giá rẻ quá"
+    "online_tag": "Online giá rẻ quá",
+    "description": "Tai nghe Chụp Tai OneOdio A6 - Đen - tai nghe ONEODIO màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360336",
@@ -2655,7 +2832,8 @@
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 6"
+    "sold": "• Đã bán 6",
+    "description": "Tai nghe Tai nghe TWS Earfun Air Life - Đen từ Earfun. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "362055",
@@ -2669,7 +2847,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
-    "online_tag": "Online giá rẻ quá"
+    "online_tag": "Online giá rẻ quá",
+    "description": "Tai nghe TWS Kieslect Adjustable Earbuds - Đen - tai nghe Kieslect màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360354",
@@ -2684,7 +2863,8 @@
     "color": "Trắng",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 1"
+    "sold": "• Đã bán 1",
+    "description": "Tai nghe Tai nghe TWS Earfun Air Pro 4 - Trắng từ Earfun. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   },
   {
     "id": "286604",
@@ -2700,7 +2880,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.8",
-    "sold": "• Đã bán 295"
+    "sold": "• Đã bán 295",
+    "description": "Tai nghe TWS Gaming Asus Rog Cetra - tai nghe Asus màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "324580",
@@ -2717,7 +2898,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "4.9",
-    "sold": "• Đã bán 444"
+    "sold": "• Đã bán 444",
+    "description": "Tai nghe Tai nghe Chụp Tai JBL Tune 670NC từ JBL. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "327256",
@@ -2733,7 +2915,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0%",
     "rating": "5",
-    "sold": "• Đã bán 92"
+    "sold": "• Đã bán 92",
+    "description": "Tai Nghe Beats Solo 4 - tai nghe Beats màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "332197",
@@ -2746,7 +2929,8 @@
     "color": "Nâu đậm",
     "installment": "Trả chậm 0%",
     "rating": "5",
-    "sold": "• Đã bán 36"
+    "sold": "• Đã bán 36",
+    "description": "Tai nghe Tai nghe Bluetooth chụp tai Beats Studio Pro USB C từ Beats. Chất lượng âm thanh cao, thiết kế gọn, màu Nâu đậm."
   },
   {
     "id": "335292",
@@ -2761,7 +2945,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 25"
+    "sold": "• Đã bán 25",
+    "description": "Tai nghe TWS Xiaomi Buds 5 Pro BT - tai nghe Xiaomi màu Titan tự nhiên. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "335293",
@@ -2776,7 +2961,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "4.7",
-    "sold": "• Đã bán 27"
+    "sold": "• Đã bán 27",
+    "description": "Tai nghe Tai nghe TWS Xiaomi Buds 5 Pro WiFi từ Xiaomi. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "337174",
@@ -2793,7 +2979,8 @@
     "installment": "Trả chậm 0% trả trước 0đ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 33"
+    "sold": "• Đã bán 33",
+    "description": "Tai nghe Chụp Tai Gaming Logitech G435 - tai nghe Logitech màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "337176",
@@ -2807,7 +2994,8 @@
     "category": "Tai nghe",
     "color": "Đen",
     "label": "QUÀ ĐẸP MÃ",
-    "sold": "• Đã bán 1"
+    "sold": "• Đã bán 1",
+    "description": "Tai nghe Tai nghe Chụp Tai Gaming Logitech Pro X 2 từ Logitech. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "337461",
@@ -2823,7 +3011,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 46"
+    "sold": "• Đã bán 46",
+    "description": "Tai nghe Chụp Tai Gaming HP HyperX Cloud Jet - tai nghe HP HyperX màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "341109",
@@ -2839,7 +3028,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 27"
+    "sold": "• Đã bán 27",
+    "description": "Tai nghe Tai nghe TWS Baseus PM115-A Bowie M2s Ultra từ Baseus. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "341418",
@@ -2855,7 +3045,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 21"
+    "sold": "• Đã bán 21",
+    "description": "Tai nghe chụp tai Marshall Major V Xanh bóng đêm - tai nghe Marshall màu Xanh Navy. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "341796",
@@ -2871,7 +3062,8 @@
     "label": "QUÀ ĐẸP MÃ",
     "installment": "Trả chậm 0% trả trước 0đ",
     "rating": "5",
-    "sold": "• Đã bán 63"
+    "sold": "• Đã bán 63",
+    "description": "Tai nghe Tai nghe Chụp Tai Gaming Logitech G435 từ Logitech. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "360026",
@@ -2887,7 +3079,8 @@
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 4"
+    "sold": "• Đã bán 4",
+    "description": "Tai nghe TWS Earfun Air Life - Tím - tai nghe Earfun màu Tím. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360030",
@@ -2902,7 +3095,8 @@
     "color": "Đen",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 1"
+    "sold": "• Đã bán 1",
+    "description": "Tai nghe Tai nghe TWS Earfun Air Pro 3 - Đen từ Earfun. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "360033",
@@ -2917,7 +3111,8 @@
     "color": "Đen",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 1"
+    "sold": "• Đã bán 1",
+    "description": "Tai nghe Open-Ear Earfun Open Jump - tai nghe Earfun màu Đen. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360042",
@@ -2933,7 +3128,8 @@
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 12"
+    "sold": "• Đã bán 12",
+    "description": "Tai nghe Tai nghe TWS Havit H2590BT từ HAVIT. Chất lượng âm thanh cao, thiết kế gọn, màu Đen."
   },
   {
     "id": "360323",
@@ -2949,7 +3145,8 @@
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
     "rating": "5",
-    "sold": "• Đã bán 3"
+    "sold": "• Đã bán 3",
+    "description": "Tai nghe Chụp Tai OneOdio Pro C - Xanh Da Trời - tai nghe ONEODIO màu Xanh Da Trời. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360324",
@@ -2964,7 +3161,8 @@
     "color": "Vàng Hồng",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 2"
+    "sold": "• Đã bán 2",
+    "description": "Tai nghe Tai nghe Chụp Tai OneOdio Pro C - Vàng Hồng từ ONEODIO. Chất lượng âm thanh cao, thiết kế gọn, màu Vàng Hồng."
   },
   {
     "id": "360325",
@@ -2979,7 +3177,8 @@
     "color": "Bạc",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
     "online_tag": "Online giá rẻ quá",
-    "sold": "• Đã bán 1"
+    "sold": "• Đã bán 1",
+    "description": "Tai nghe Chụp Tai OneOdio Pro C - Nâu Bạc - tai nghe ONEODIO màu Bạc. Âm thanh sống động, chống ồn, pin lâu."
   },
   {
     "id": "360335",
@@ -2993,6 +3192,7 @@
     "category": "Tai nghe",
     "color": "Trắng",
     "label": "QUÀ XỊN GIÁ \"YÊU\"",
-    "online_tag": "Online giá rẻ quá"
+    "online_tag": "Online giá rẻ quá",
+    "description": "Tai nghe Tai nghe Chụp Tai OneOdio A6 - Trắng từ ONEODIO. Chất lượng âm thanh cao, thiết kế gọn, màu Trắng."
   }
 ]

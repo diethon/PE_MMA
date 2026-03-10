@@ -8,15 +8,11 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { AppStackParamList } from '../navigation/types';
-
-function formatVND(num: number): string {
-  if (!num) return '0₫';
-  return num.toLocaleString('vi-VN') + '₫';
-}
+import { formatVND } from '@/utils/format';
 
 export const CartScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
-  const { items, loading, updateQuantity, removeItem, clearCart, checkoutSelected } = useCart();
+  const { items, loading, updateQuantity, removeItem, clearCart } = useCart();
   const { user } = useAuth();
 
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
@@ -94,29 +90,19 @@ export const CartScreen: React.FC = () => {
       Alert.alert('Chưa chọn sản phẩm', 'Vui lòng chọn ít nhất một sản phẩm để thanh toán.');
       return;
     }
-    Alert.alert(
-      'Xác nhận thanh toán',
-      `Bạn có chắc muốn đặt hàng?\n\nSố lượng: ${selectedCount} sản phẩm\nTổng tiền: ${formatVND(selectedSubtotal)}\nPhí vận chuyển: Miễn phí\n\nĐơn hàng sẽ được xử lý ngay sau khi xác nhận.`,
-      [
-        { text: 'Hủy', style: 'cancel' },
-        {
-          text: 'Xác nhận đặt hàng',
-          onPress: async () => {
-            try {
-              const orderId = await checkoutSelected(Array.from(selectedIds));
-              setSelectedIds(new Set());
-              Alert.alert(
-                'Đặt hàng thành công!',
-                `Mã đơn: ${orderId}\nTổng: ${formatVND(selectedSubtotal)}\n\nCảm ơn bạn đã mua hàng!`,
-                [{ text: 'OK' }],
-              );
-            } catch {
-              Alert.alert('Lỗi', 'Không thể đặt hàng. Vui lòng thử lại.');
-            }
-          },
-        },
-      ],
-    );
+    const selectedItems = items
+      .filter((i) => selectedIds.has(i.productId))
+      .map((i) => ({
+        productId: i.productId,
+        name: i.name,
+        brand: i.brand,
+        image: i.image,
+        price: i.price ?? '',
+        priceNum: i.priceNum,
+        quantity: i.quantity,
+        category: i.category,
+      }));
+    navigation.navigate('Checkout', { items: selectedItems });
   };
 
   if (loading) {
@@ -185,6 +171,7 @@ export const CartScreen: React.FC = () => {
                 onToggleSelect={toggleSelect}
                 onQuantityChange={updateQuantity}
                 onRemove={handleRemove}
+                onPressProduct={(productId) => navigation.navigate('ProductDetail', { productId })}
               />
             ))}
 

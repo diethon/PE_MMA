@@ -44,7 +44,7 @@ export const ProfileScreen: React.FC = () => {
       label: 'Địa chỉ giao hàng',
       subtitle: 'Quản lý địa chỉ',
       color: '#F59E0B',
-      onPress: () => {},
+      onPress: () => navigation.navigate('AddressList'),
     },
     {
       icon: 'payment',

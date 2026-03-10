@@ -10,6 +10,8 @@ export interface UserRow {
   fullName: string;
   password: string;
   role: UserRole;
+  phone: string;
+  address: string;
   createdAt: string;
 }
 
@@ -28,6 +30,9 @@ async function getDb(): Promise<SQLite.SQLiteDatabase> {
         createdAt TEXT DEFAULT (datetime('now'))
       );
     `);
+    try { await _db.execAsync('ALTER TABLE users ADD COLUMN phone TEXT DEFAULT \'\''); } catch { /* exists */ }
+    try { await _db.execAsync('ALTER TABLE users ADD COLUMN address TEXT DEFAULT \'\''); } catch { /* exists */ }
+
     const count = await _db.getFirstAsync<{ cnt: number }>(
       'SELECT COUNT(*) as cnt FROM users',
     );
@@ -115,4 +120,19 @@ export async function changePassword(
   );
   if (!user) throw new Error('Mật khẩu cũ không đúng');
   await db.runAsync('UPDATE users SET password = ? WHERE id = ?', [newPassword, id]);
+}
+
+export async function updateUserAddress(
+  id: number,
+  phone: string,
+  address: string,
+): Promise<UserRow> {
+  const db = await getDb();
+  await db.runAsync(
+    'UPDATE users SET phone = ?, address = ? WHERE id = ?',
+    [phone.trim(), address.trim(), id],
+  );
+  const user = await db.getFirstAsync<UserRow>('SELECT * FROM users WHERE id = ?', [id]);
+  if (!user) throw new Error('Update failed');
+  return user;
 }

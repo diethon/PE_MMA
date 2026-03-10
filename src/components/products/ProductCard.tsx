@@ -47,7 +47,7 @@ const RealProductCard: React.FC<UnifiedCardProps> = ({ product, onPress, variant
         onPress={onPress}
         activeOpacity={0.8}
         className="bg-card rounded-xl overflow-hidden border border-border flex-1 m-1"
-        style={{ maxWidth: '48%' }}
+        style={{ maxWidth: '48%', minHeight: 250 }}
       >
         <View className="relative">
           <Image
@@ -73,40 +73,42 @@ const RealProductCard: React.FC<UnifiedCardProps> = ({ product, onPress, variant
             />
           </TouchableOpacity>
         </View>
-        <View className="p-3">
+        <View className="p-3 flex-1 justify-between">
           <Text className="text-xs text-gray-500 mb-1">{product.brand}</Text>
           <Text className="text-sm font-semibold text-text-primary" numberOfLines={2}>
             {product.name}
           </Text>
-          <View className="mt-2">
-            {product.price ? (
-              <Text className="text-base font-bold text-primary">{product.price}</Text>
-            ) : (
-              <Text className="text-sm text-gray-400 italic">Liên hệ</Text>
-            )}
-            {product.oldPrice ? (
-              <Text className="text-xs text-gray-400 line-through">{product.oldPrice}</Text>
-            ) : null}
-          </View>
-          <View className="flex-row items-center justify-between mt-2">
-            <View className="flex-row items-center flex-1 flex-wrap">
-              {product.rating ? (
-                <View className="flex-row items-center mr-2">
-                  <MaterialIcons name="star" size={12} color={Colors.star} />
-                  <Text className="text-xs text-gray-500 ml-0.5">{product.rating}</Text>
-                </View>
-              ) : null}
-              {product.sold ? (
-                <Text className="text-xs text-gray-400">{product.sold.replace('• ', '')}</Text>
+          <View>
+            <View className="mt-2">
+              {product.price ? (
+                <Text className="text-base font-bold text-primary">{product.price}</Text>
+              ) : (
+                <Text className="text-sm text-gray-400 italic">Liên hệ</Text>
+              )}
+              {product.oldPrice ? (
+                <Text className="text-xs text-gray-400 line-through">{product.oldPrice}</Text>
               ) : null}
             </View>
-            <TouchableOpacity
-              onPress={handleAddToCart}
-              className="bg-primary rounded-full p-1.5"
-              style={{ elevation: 2 }}
-            >
-              <MaterialIcons name="add-shopping-cart" size={14} color="#fff" />
-            </TouchableOpacity>
+            <View className="flex-row items-center justify-between mt-2">
+              <View className="flex-row items-center flex-1 flex-wrap">
+                {product.rating ? (
+                  <View className="flex-row items-center mr-2">
+                    <MaterialIcons name="star" size={12} color={Colors.star} />
+                    <Text className="text-xs text-gray-500 ml-0.5">{product.rating}</Text>
+                  </View>
+                ) : null}
+                {product.sold ? (
+                  <Text className="text-xs text-gray-400">{product.sold.replace('• ', '')}</Text>
+                ) : null}
+              </View>
+              <TouchableOpacity
+                onPress={handleAddToCart}
+                className="bg-primary rounded-full p-1.5"
+                style={{ elevation: 2 }}
+              >
+                <MaterialIcons name="add-shopping-cart" size={14} color="#fff" />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </TouchableOpacity>

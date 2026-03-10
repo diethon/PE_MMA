@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,14 +6,30 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  Dimensions,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  StyleSheet,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ProductCard } from '@/components/products';
 import { Colors } from '@/constants';
 import { allProducts, categories, accessorySubCategories } from '@/constants/productData';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { AppStackParamList } from '../navigation/types';
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const BANNER_WIDTH = SCREEN_WIDTH;
+const BANNER_HEIGHT = 200;
+
+const SLIDE_IMAGES = [
+  require('../../assets/slide/i1.png'),
+  require('../../assets/slide/i2.jpg'),
+  require('../../assets/slide/i3.jpg'),
+];
+
+const AUTO_PLAY_INTERVAL = 4000;
 
 const hotDeals = allProducts
   .filter((p) => p.discount)
@@ -56,33 +72,61 @@ const adapterHighlights = allProducts
 
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
+  const scrollRef = useRef<ScrollView>(null);
+  const bannerRef = useRef<FlatList>(null);
+  const [bannerIndex, setBannerIndex] = useState(0);
+  useScrollToTop(scrollRef);
 
-  const navigateToProduct = (id: string) => {
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBannerIndex((prev) => {
+        const next = (prev + 1) % SLIDE_IMAGES.length;
+        bannerRef.current?.scrollToOffset({ offset: next * BANNER_WIDTH, animated: true });
+        return next;
+      });
+    }, AUTO_PLAY_INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
+
+  const onBannerScroll = useCallback((e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const index = Math.round(e.nativeEvent.contentOffset.x / BANNER_WIDTH);
+    if (index >= 0 && index < SLIDE_IMAGES.length) setBannerIndex(index);
+  }, []);
+
+  const navigateToProduct = useCallback((id: string) => {
     navigation.navigate('ProductDetail', { productId: id });
-  };
+  }, [navigation]);
 
   return (
     <View className="flex-1 bg-surface">
-      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        {/* Hero Banner */}
-        <View className="mx-4 mt-3 rounded-xl overflow-hidden bg-primary-light mb-4">
-          <View className="p-5">
-            <Text className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">
-              Khám phá ngay
-            </Text>
-            <Text className="text-2xl font-bold text-text-primary mb-2">
-              Bộ sưu tập Tech 2026
-            </Text>
-            <Text className="text-sm text-text-secondary mb-4 leading-5">
-              Phone, Laptop, Tablet, Watch - Tất cả trong một nơi với giá tốt nhất.
-            </Text>
-            <TouchableOpacity
-              className="bg-primary py-2.5 px-5 rounded-lg self-start flex-row items-center"
-              onPress={() => navigation.navigate('ProductListMain')}
-            >
-              <Text className="text-white font-semibold text-sm">Xem tất cả</Text>
-              <MaterialIcons name="arrow-forward" size={16} color="#fff" style={{ marginLeft: 4 }} />
-            </TouchableOpacity>
+      <ScrollView ref={scrollRef} className="flex-1" showsVerticalScrollIndicator={false}>
+        {/* Banner Slider */}
+        <View style={styles.bannerWrap}>
+          <FlatList
+            ref={bannerRef}
+            data={SLIDE_IMAGES}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            onScroll={onBannerScroll}
+            scrollEventThrottle={16}
+            snapToInterval={BANNER_WIDTH}
+            snapToAlignment="start"
+            decelerationRate="fast"
+            keyExtractor={(_, i) => `slide-${i}`}
+            renderItem={({ item }) => (
+              <View style={styles.slide}>
+                <Image source={item} style={styles.slideImage} resizeMode="cover" />
+              </View>
+            )}
+          />
+          <View style={styles.dots}>
+            {SLIDE_IMAGES.map((_, i) => (
+              <View
+                key={i}
+                style={[styles.dot, i === bannerIndex && styles.dotActive]}
+              />
+            ))}
           </View>
         </View>
 
@@ -479,3 +523,42 @@ export const HomeScreen: React.FC = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  bannerWrap: {
+    width: BANNER_WIDTH,
+    height: BANNER_HEIGHT,
+    marginBottom: 16,
+    overflow: 'hidden',
+  },
+  slide: {
+    width: BANNER_WIDTH,
+    height: BANNER_HEIGHT,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  slideImage: {
+    width: BANNER_WIDTH,
+    height: BANNER_HEIGHT,
+  },
+  dots: {
+    position: 'absolute',
+    bottom: 12,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginHorizontal: 4,
+    backgroundColor: 'rgba(255,255,255,0.6)',
+  },
+  dotActive: {
+    width: 24,
+    backgroundColor: '#fff',
+  },
+});

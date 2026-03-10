@@ -121,6 +121,14 @@ export async function getTotalItemsSold(): Promise<number> {
   return row?.total ?? 0;
 }
 
+export async function getDistinctBuyersCount(): Promise<number> {
+  const db = await getDb();
+  const row = await db.getFirstAsync<{ cnt: number }>(
+    'SELECT COUNT(DISTINCT userId) as cnt FROM orders',
+  );
+  return row?.cnt ?? 0;
+}
+
 export async function getRevenueByCategory(): Promise<RevenueByCategory[]> {
   const db = await getDb();
   return db.getAllAsync<RevenueByCategory>(

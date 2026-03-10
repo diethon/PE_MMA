@@ -22,11 +22,7 @@ import {
   type OrderSummary,
   type OrderRow,
 } from '@/services/orderDb';
-
-function formatVND(num: number): string {
-  if (!num) return '0₫';
-  return num.toLocaleString('vi-VN') + '₫';
-}
+import { formatVND } from '@/utils/format';
 
 const months = [
   'Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',

@@ -20,6 +20,7 @@ import type { AppStackParamList } from '../navigation/types';
 export const EditProfileScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
   const { user, isSeller, updateProfile, changePassword } = useAuth();
+  const userId = user?.id ?? 0;
   const [fullName, setFullName] = useState(user?.fullName ?? '');
   const [email, setEmail] = useState(user?.email ?? '');
   const [loading, setLoading] = useState(false);
@@ -64,6 +65,7 @@ export const EditProfileScreen: React.FC = () => {
       setPasswordLoading(false);
     }
   };
+
 
   return (
     <View className="flex-1 bg-surface">

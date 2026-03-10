@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SearchBar } from '@/components/ui';
@@ -46,12 +47,28 @@ export const ProductListScreen: React.FC = () => {
     if (isAccessoryType(cat)) setAccessoryExpanded(true);
   }, [route.params?.category, isAccessoryType]);
 
+  const PAGE_SIZE = 20;
+  const [page, setPage] = useState(1);
+
   const brands = useMemo(() => getBrands(activeCategory), [activeCategory]);
 
-  const filteredProducts = useMemo(
+  const allFilteredProducts = useMemo(
     () => filterAndSort(activeCategory, activeBrand, activeSort, search),
     [activeCategory, activeBrand, activeSort, search],
   );
+
+  useEffect(() => { setPage(1); }, [activeCategory, activeBrand, activeSort, search]);
+
+  const filteredProducts = useMemo(
+    () => allFilteredProducts.slice(0, page * PAGE_SIZE),
+    [allFilteredProducts, page],
+  );
+
+  const hasMore = filteredProducts.length < allFilteredProducts.length;
+
+  const loadMore = useCallback(() => {
+    if (hasMore) setPage((p) => p + 1);
+  }, [hasMore]);
 
   const handleCategoryChange = useCallback((cat: CategoryType) => {
     setActiveCategory(cat);
@@ -236,7 +253,7 @@ export const ProductListScreen: React.FC = () => {
 
         <View className="flex-row items-center">
           <Text className="text-xs text-gray-400 mr-3">
-            {filteredProducts.length} sản phẩm
+            {filteredProducts.length}/{allFilteredProducts.length} sản phẩm
           </Text>
           <TouchableOpacity
             onPress={() => setViewMode('list')}
@@ -276,9 +293,23 @@ export const ProductListScreen: React.FC = () => {
           contentContainerStyle={{ paddingHorizontal: 12, paddingBottom: 20, paddingTop: 8 }}
           renderItem={renderProduct}
           showsVerticalScrollIndicator={false}
-          initialNumToRender={10}
+          initialNumToRender={PAGE_SIZE}
           maxToRenderPerBatch={10}
           windowSize={5}
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.4}
+          ListFooterComponent={
+            hasMore ? (
+              <View className="items-center py-5">
+                <ActivityIndicator size="small" color={Colors.primary} />
+                <Text className="text-xs text-gray-400 mt-2">Đang tải thêm...</Text>
+              </View>
+            ) : filteredProducts.length > PAGE_SIZE ? (
+              <View className="items-center py-4">
+                <Text className="text-xs text-gray-400">Đã hiển thị tất cả sản phẩm</Text>
+              </View>
+            ) : null
+          }
         />
       )}
 

@@ -10,6 +10,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
 import type { AppStackParamList } from '../navigation/types';
+import { formatVND } from '@/utils/format';
 
 const { width } = Dimensions.get('window');
 
@@ -23,11 +24,6 @@ const categoryLabels: Record<string, string> = {
   adapter: 'Adapter sạc',
 };
 
-function formatVND(num: number): string {
-  if (!num) return '0₫';
-  return num.toLocaleString('vi-VN') + '₫';
-}
-
 export const ProductDetailScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
   const route = useRoute<RouteProp<AppStackParamList, 'ProductDetail'>>();
@@ -36,7 +32,7 @@ export const ProductDetailScreen: React.FC = () => {
     () => allProducts.find((p) => p.id === productId) ?? allProducts[0],
     [productId],
   );
-  const { addProduct, checkoutSelected } = useCart();
+  const { addProduct } = useCart();
   const { user } = useAuth();
   const { isFav, toggleFav } = useFavorites();
   const favorite = isFav(product.id);
@@ -58,32 +54,26 @@ export const ProductDetailScreen: React.FC = () => {
       Alert.alert('Lỗi', 'Vui lòng đăng nhập để mua hàng.');
       return;
     }
-    const total = product.priceNum * buyQty;
-    Alert.alert(
-      'Xác nhận mua hàng',
-      `${product.name}\nSố lượng: ${buyQty}\nTổng: ${formatVND(total)}\n\nXác nhận đặt hàng?`,
-      [
-        { text: 'Hủy', style: 'cancel' },
-        {
-          text: 'Thanh toán',
-          onPress: async () => {
-            try {
-              await addProduct(product, buyQty);
-              const orderId = await checkoutSelected([product.id]);
-              setShowBuyNow(false);
-              setBuyQty(1);
-              Alert.alert(
-                'Đặt hàng thành công!',
-                `Mã đơn: ${orderId}\nTổng: ${formatVND(total)}\n\nCảm ơn bạn đã mua hàng!`,
-              );
-            } catch {
-              Alert.alert('Lỗi', 'Không thể đặt hàng. Vui lòng thử lại.');
-            }
-          },
-        },
-      ],
-    );
-  }, [user, product, buyQty, addProduct, checkoutSelected]);
+    try {
+      await addProduct(product, buyQty);
+      setShowBuyNow(false);
+      navigation.navigate('Checkout', {
+        items: [{
+          productId: product.id,
+          name: product.name,
+          brand: product.brand,
+          image: product.image,
+          price: product.price ?? '',
+          priceNum: product.priceNum,
+          quantity: buyQty,
+          category: product.category,
+        }],
+      });
+      setBuyQty(1);
+    } catch {
+      Alert.alert('Lỗi', 'Không thể xử lý. Vui lòng thử lại.');
+    }
+  }, [user, product, buyQty, addProduct, navigation]);
 
   const relatedProducts = useMemo(
     () =>
